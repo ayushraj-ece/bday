@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap');
 
 * {
     padding: 0;
@@ -141,7 +141,67 @@ body {
     opacity: 1;
 }
 
-/* ========== MUSIC BUTTON CONTAINER ========== */
+/* ========== BANNER ========== */
+.birthday-banner {
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
+    opacity: 0;
+}
+
+.birthday-banner.show {
+    animation: bannerDrop 2s ease-out forwards;
+}
+
+@keyframes bannerDrop {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+    100% {
+        top: 10px;
+        opacity: 1;
+    }
+}
+
+.birthday-banner img {
+    width: 600px;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+/* ========== CONFETTI ========== */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2500;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--color);
+    top: -10px;
+    opacity: 1;
+    animation: confettiFall var(--duration) ease-in forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(var(--rotation));
+        opacity: 0;
+    }
+}
+
+/* ========== MUSIC BUTTON ========== */
 .music-btn-container {
     position: fixed;
     top: 50%;
@@ -195,13 +255,129 @@ body {
     }
 }
 
-/* ========== FLYING CAKE WITH BALLOONS ========== */
+/* ========== BIRTHDAY MESSAGE ========== */
+.birthday-message-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 4999;
+    opacity: 0;
+    visibility: hidden;
+    width: 90%;
+    max-width: 800px;
+}
+
+.birthday-message-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.birthday-message-container.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.message-line {
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--color-burgundy);
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    transform: scale(0.8);
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.message-line.show {
+    animation: messageAppear 0.8s ease-out forwards;
+}
+
+.message-line.hide {
+    animation: messageDisappear 0.6s ease-in forwards;
+}
+
+@keyframes messageAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes messageDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-30px);
+    }
+}
+
+/* ========== CURVED HAPPY BIRTHDAY ========== */
+.curved-happy-birthday {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2600;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.curved-happy-birthday.show {
+    animation: curvedFadeIn 1.5s ease-out forwards;
+}
+
+.curved-happy-birthday.hide {
+    animation: curvedFadeOut 1.5s ease-in forwards;
+}
+
+@keyframes curvedFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes curvedFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+}
+
+.curved-happy-birthday h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--color-burgundy);
+    text-shadow: 3px 3px 6px rgba(176, 95, 95, 0.3);
+    letter-spacing: 2px;
+}
+
+/* ========== FLYING CAKE (STAYS VISIBLE) ========== */
 .flying-cake-container {
     position: fixed;
     bottom: -500px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 4000;
+    z-index: 2700;
     display: flex;
     align-items: flex-end;
     gap: 20px;
@@ -209,31 +385,37 @@ body {
 }
 
 .flying-cake-container.fly-up {
-    animation: flyUpCake 4s ease-out forwards;
+    animation: flyUpCakeSlower 6s ease-out forwards;
 }
 
-@keyframes flyUpCake {
+@keyframes flyUpCakeSlower {
     0% {
         bottom: -500px;
         opacity: 0;
     }
-    20% {
+    15% {
         opacity: 1;
     }
     100% {
-        bottom: 50%;
+        bottom: 40%;
         opacity: 1;
         transform: translate(-50%, 50%);
     }
 }
 
-.flying-cake-container.move-to-position {
-    animation: moveToFinalPosition 3s ease-in-out forwards;
+.flying-cake-container.hold-center {
+    bottom: 40%;
+    opacity: 1;
+    transform: translate(-50%, 50%);
 }
 
-@keyframes moveToFinalPosition {
+.flying-cake-container.move-to-position {
+    animation: moveToCornerSlower 5s ease-in-out forwards;
+}
+
+@keyframes moveToCornerSlower {
     0% {
-        bottom: 50%;
+        bottom: 40%;
         left: 50%;
         transform: translate(-50%, 50%) scale(1);
         opacity: 1;
@@ -323,9 +505,7 @@ body {
 }
 
 @keyframes starTwinkle {
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
 
 @keyframes rotateStar {
@@ -337,30 +517,11 @@ body {
     }
 }
 
-.star1 {
-    top: 100px;
-    left: 200px;
-}
-
-.star2 {
-    top: 150px;
-    right: 250px;
-}
-
-.star3 {
-    top: 350px;
-    left: 500px;
-}
-
-.star4 {
-    bottom: 120px;
-    left: 100px;
-}
-
-.star5 {
-    bottom: 200px;
-    right: 150px;
-}
+.star1 { top: 100px; left: 200px; }
+.star2 { top: 150px; right: 250px; }
+.star3 { top: 350px; left: 500px; }
+.star4 { bottom: 120px; left: 100px; }
+.star5 { bottom: 200px; right: 150px; }
 
 .decorate_flower--one,
 .decorate_flower--two,
@@ -371,25 +532,12 @@ body {
 }
 
 @keyframes flowerAppear {
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
 
-.decorate_flower--one {
-    top: 250px;
-    left: 50px;
-}
-
-.decorate_flower--two {
-    top: 225px;
-    right: 460px;
-}
-
-.decorate_flower--three {
-    top: 150px;
-    right: 235px;
-}
+.decorate_flower--one { top: 250px; left: 50px; }
+.decorate_flower--two { top: 225px; right: 460px; }
+.decorate_flower--three { top: 150px; right: 235px; }
 
 .decorate_bottom {
     position: absolute;
@@ -419,12 +567,14 @@ body {
     }
 }
 
-/* ========== CONTENT ========== */
+/* ========== CONTENT (PERFECTLY ALIGNED) ========== */
 .content {
     width: 100%;
     position: relative;
     display: flex;
-    padding-top: 3rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 180px 50px 50px 50px;
     opacity: 0;
 }
 
@@ -433,26 +583,23 @@ body {
 }
 
 @keyframes contentFadeIn {
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
 
-.content .left,
+.content .left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
 .content .right {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-
-.content .left {
-    width: 40%;
-}
-
-.content .right {
-    width: 60%;
+    width: 55%;
 }
 
 /* ========== TITLE ========== */
@@ -461,8 +608,8 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    font-family: "Pacifico", cursive;
-    font-size: 3.5rem;
+    font-family: "Dancing Script", cursive;
+    font-size: 3rem;
     flex-direction: column;
     perspective: 1000px;
 }
@@ -470,42 +617,36 @@ body {
 .title .happy,
 .title .birthday {
     position: relative;
-    text-shadow: 4px 4px var(--color-terracotta),
-        -4px 4px var(--color-terracotta),
-        4px -4px var(--color-terracotta),
-        -4px -4px var(--color-terracotta),
-        4px 8px 0 var(--color-black);
+    text-shadow: 4px 4px var(--color-black), 
+                -4px 4px var(--color-black), 
+                4px -4px var(--color-black), 
+                -4px -4px var(--color-black), 
+                4px 8px 0 var(--color-black);
     font-weight: bold;
     display: flex;
     justify-content: center;
 }
 
 .title .happy {
-    color: var(--color-burgundy);
+    color: var(--color-white);
 }
 
 .title .happy span,
 .title .birthday span {
     opacity: 0;
-    transform: translateY(50px) rotateX(-90deg);
+    transform: translateY(50px);
 }
 
 .title .happy span.animate,
 .title .birthday span.animate {
-    animation: letterDrop 0.6s var(--t) forwards;
+    animation: txtTranslateY 0.5s var(--t) forwards;
 }
 
-@keyframes letterDrop {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px) rotateX(-90deg);
-    }
-    50% {
-        transform: translateY(10px) rotateX(10deg);
-    }
+@keyframes txtTranslateY {
     100% {
+        transform: translateY(0);
         opacity: 1;
-        transform: translateY(0) rotateX(0deg);
+        visibility: visible;
     }
 }
 
@@ -517,32 +658,145 @@ body {
     position: absolute;
     right: 45px;
     top: -350px;
+    transform: rotate(-40deg);
+    z-index: -1;
     opacity: 0;
 }
 
 .title .hat.animate {
-    animation: hatDrop 2s forwards;
+    animation: topHat 4s forwards ease;
 }
 
-@keyframes hatDrop {
+@keyframes topHat {
     0% {
         top: -350px;
+        transform: rotate(-40deg);
         opacity: 0;
-        transform: rotate(-180deg);
     }
-    60% {
-        top: -20px;
-        opacity: 1;
-        transform: rotate(10deg);
-    }
-    100% {
+    40% {
         top: -30px;
+        transform: rotate(-40deg);
         opacity: 1;
+    }
+    70%, 100% {
+        top: -30px;
         transform: rotate(0deg);
+        opacity: 1;
     }
 }
 
-/* ========== FINAL CAKE POSITION ========== */
+/* ========== DATE ========== */
+.date__of__birth {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-salmon);
+    border-radius: 50px;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    border: 3px solid var(--color-black);
+    position: relative;
+    transform: translateY(-100px);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    width: 0px;
+}
+
+.date__of__birth.show {
+    animation: dateOfBirth 5s forwards;
+}
+
+@keyframes dateOfBirth {
+    20%, 40% {
+        width: 0px;
+        height: 0;
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+    }
+    45% {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 0px;
+    }
+    50%, 100% {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+        width: 300px;
+        height: 50px;
+    }
+}
+
+.date__of__birth span {
+    font-weight: bold;
+    margin: 0px 40px;
+    font-size: 1.2rem;
+}
+
+/* ========== BUTTON ========== */
+.left .btn {
+    transform: scale(0);
+}
+
+.left .btn.show {
+    animation: scaleCricle 2s forwards ease-in-out;
+}
+
+@keyframes scaleCricle {
+    0% {
+        transform: scale(0);
+    }
+    10% {
+        transform: scale(1.3);
+    }
+    20% {
+        transform: scale(0.7);
+    }
+    30%, 100% {
+        transform: scale(1);
+    }
+}
+
+#btn__postcard {
+    position: relative;
+    margin-top: 30px;
+    background-color: var(--color-burgundy);
+    outline: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 3px solid var(--color-terracotta);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#btn__postcard:active {
+    transform: scale(0.95);
+}
+
+#btn__postcard i {
+    margin-left: 8px;
+}
+
+#btn__postcard:hover {
+    background-color: var(--color-terracotta);
+    border-color: var(--color-burgundy);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== FINAL CAKE ========== */
 .final-cake-container {
     position: relative;
     margin-bottom: 20px;
@@ -584,152 +838,21 @@ body {
     }
 }
 
-/* ========== DATE AND NAME ========== */
-.date__of__birth,
-.name {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--color-salmon);
-    border-radius: 50px;
-    margin-top: 20px;
-    font-family: "Poppins", sans-serif;
-}
-
-.date__of__birth {
-    border: 3px solid var(--color-terracotta);
-    position: relative;
-    opacity: 0;
-    width: 0px;
-    height: 0px;
-}
-
-.date__of__birth.show {
-    animation: dateExpand 2s forwards;
-}
-
-@keyframes dateExpand {
-    0% {
-        width: 0px;
-        height: 0;
-        opacity: 0;
-    }
-    50% {
-        width: 300px;
-        height: 0px;
-        opacity: 1;
-    }
-    100% {
-        width: 300px;
-        height: 50px;
-        opacity: 1;
-    }
-}
-
-.name {
-    position: absolute;
-    padding: 8px 25px;
-    bottom: -20px;
-    border: 3px solid var(--color-terracotta);
-    font-family: 'Dancing Script', cursive;
-}
-
-.date__of__birth span,
-.name span {
-    font-weight: bold;
-    margin: 0px 40px;
-    color: white;
-}
-
-.date__of__birth span {
-    font-size: 1.2rem;
-}
-
-.name span {
-    font-size: 1.7rem;
-}
-
-/* ========== BUTTON ========== */
-.left .btn {
-    opacity: 0;
-    transform: scale(0);
-}
-
-.left .btn.show {
-    animation: buttonPop 0.8s forwards;
-}
-
-@keyframes buttonPop {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    60% {
-        transform: scale(1.15);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-#btn__postcard {
-    position: relative;
-    margin-top: 30px;
-    background: linear-gradient(135deg, var(--color-burgundy), var(--color-salmon));
-    outline: none;
-    padding: 14px 30px;
-    font-size: 1.05rem;
-    border-radius: 50px;
-    border: 3px solid var(--color-terracotta);
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    color: white;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(176, 95, 95, 0.3);
-}
-
-#btn__postcard:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(176, 95, 95, 0.5);
-}
-
-#btn__postcard:active {
-    transform: translateY(-1px) scale(0.98);
-}
-
-#btn__postcard i {
-    margin-left: 10px;
-    font-size: 1.2rem;
-}
-
 /* ========== IMAGE BOX ========== */
 .right .box__account {
     position: relative;
+    transform: translateY(700px);
     opacity: 0;
-    transform: scale(0.5);
 }
 
 .right .box__account.show {
-    animation: imageBoxAppear 1.2s forwards;
+    animation: topBoxImage 2s forwards ease-out;
 }
 
-@keyframes imageBoxAppear {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
-    }
-    60% {
-        transform: scale(1.05) rotate(5deg);
-    }
-    100% {
+@keyframes topBoxImage {
+    to {
+        transform: translateY(0);
         opacity: 1;
-        transform: scale(1) rotate(0deg);
     }
 }
 
@@ -741,14 +864,28 @@ body {
     overflow: hidden;
     display: flex;
     align-items: center;
-    border: 6px solid var(--color-burgundy);
-    box-shadow: 0 15px 40px rgba(176, 95, 95, 0.3);
+    border: 6px solid var(--color-black);
 }
 
 .content .right .image img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
+}
+
+.name {
+    position: absolute;
+    padding: 0px 20px;
+    bottom: -20px;
+    border: 3px solid var(--color-black);
+    font-family: 'Dancing Script', cursive;
+    background-color: var(--color-salmon);
+    border-radius: 50px;
+}
+
+.name span {
+    font-weight: bold;
+    margin: 0px 40px;
+    font-size: 1.7rem;
 }
 
 /* ========== CIRCLE BADGE ========== */
@@ -759,25 +896,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    transform: scale(0);
 }
 
 .cricle.show {
-    animation: circleSpin 1.2s forwards;
-}
-
-@keyframes circleSpin {
-    0% {
-        opacity: 0;
-        transform: scale(0) rotate(-360deg);
-    }
-    60% {
-        transform: scale(1.1) rotate(20deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
+    animation: scaleCricle 3s forwards ease-in-out;
 }
 
 .text__cricle {
@@ -785,15 +908,14 @@ body {
     height: 100px;
     background-color: var(--color-salmon);
     border-radius: 50%;
-    border: 5px solid var(--color-terracotta);
+    border: 5px solid var(--color-black);
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: rotateCircle 8s linear infinite;
-    box-shadow: 0 5px 15px rgba(176, 95, 95, 0.3);
+    animation: rotateCricle 5s linear infinite;
 }
 
-@keyframes rotateCircle {
+@keyframes rotateCricle {
     to {
         transform: rotate(360deg);
     }
@@ -803,32 +925,29 @@ body {
     top: 0%;
     left: 50%;
     position: absolute;
-    color: white;
+    color: var(--color-black);
     transform: rotate(calc(var(--i) * 24deg));
     transform-origin: 0 45px;
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.7rem;
 }
 
 .fa-heart {
-    color: var(--color-burgundy);
-    filter: drop-shadow(0 0 5px rgba(176, 95, 95, 0.5));
-    animation: heartBeat 1.2s infinite;
+    color: var(--color-heart);
+    filter: drop-shadow(0 0 3px var(--color-heart));
+    animation: heartBeat 1s infinite linear;
 }
 
 @keyframes heartBeat {
-    0%, 100% {
-        transform: scale(1);
-    }
     50% {
-        transform: scale(1.15);
+        transform: scale(1.2);
     }
 }
 
 .cricle .fa-heart {
     position: absolute;
+    transform: scale(0.85);
 }
 
 /* ========== BALLOONS ========== */
@@ -836,17 +955,21 @@ body {
     position: absolute;
     top: -70px;
     left: -70px;
-    animation: balloonSwing1 3s ease-in-out infinite;
+    animation: balloon1 2s infinite linear;
 }
 
-@keyframes balloonSwing1 {
-    0%, 100% {
+@keyframes balloon1 {
+    0%, 50%, 100% {
+        transform-origin: bottom right;
         transform: rotate(0deg);
-        transform-origin: bottom center;
     }
-    50% {
-        transform: rotate(5deg);
-        transform-origin: bottom center;
+    25% {
+        transform-origin: bottom right;
+        transform: rotate(3deg);
+    }
+    75% {
+        transform-origin: bottom right;
+        transform: rotate(-3deg);
     }
 }
 
@@ -855,28 +978,33 @@ body {
     top: 170px;
     right: -65px;
     z-index: -1;
-    animation: balloonSwing2 3s ease-in-out infinite;
+    transform: rotate(10deg);
+    animation: balloon2 2s infinite linear;
 }
 
-@keyframes balloonSwing2 {
-    0%, 100% {
-        transform: rotate(0deg);
-        transform-origin: bottom center;
+@keyframes balloon2 {
+    0%, 50%, 100% {
+        transform-origin: bottom left;
+        transform: rotate(10deg);
     }
-    50% {
-        transform: rotate(-5deg);
-        transform-origin: bottom center;
+    25% {
+        transform-origin: bottom left;
+        transform: rotate(7deg);
+    }
+    75% {
+        transform-origin: bottom left;
+        transform: rotate(13deg);
     }
 }
 
-/* ========== 3D POSTCARD ========== */
+/* ========== 3D POSTCARD (HORIZONTAL 617×405) ========== */
 .postcard-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -893,18 +1021,24 @@ body {
 
 .close-postcard {
     position: fixed;
-    top: 30px;
-    right: 40px;
-    font-size: 40px;
+    top: 25px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-burgundy);
+    border: none;
+    border-radius: 50%;
     color: white;
+    font-size: 24px;
     cursor: pointer;
     z-index: 10002;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .close-postcard:hover {
-    transform: rotate(90deg) scale(1.2);
-    color: var(--color-salmon);
+    transform: rotate(90deg) scale(1.1);
+    background: var(--color-salmon);
 }
 
 .postcard-hint {
@@ -913,28 +1047,20 @@ body {
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
     z-index: 10002;
-    background: rgba(176, 95, 95, 0.8);
+    background: rgba(176, 95, 95, 0.9);
     padding: 12px 30px;
     border-radius: 30px;
-    animation: hintPulse 2s ease-in-out infinite;
-}
-
-@keyframes hintPulse {
-    0%, 100% {
-        opacity: 0.7;
-    }
-    50% {
-        opacity: 1;
-    }
+    font-weight: 500;
 }
 
 .postcard-scene {
-    width: 405px;
-    height: 617px;
-    perspective: 1500px;
+    width: 617px;
+    height: 405px;
+    perspective: 2000px;
+    user-select: none;
 }
 
 .postcard-card {
@@ -942,9 +1068,9 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+    transform: rotateX(-15deg) rotateY(15deg);
     cursor: grab;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
 .postcard-card:active {
@@ -956,7 +1082,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -965,6 +1091,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    pointer-events: none;
 }
 
 .postcard-front {
@@ -978,22 +1105,25 @@ body {
 
 /* ========== RESPONSIVE ========== */
 @media screen and (max-width: 768px) {
-    .aesthetic-btn {
-        padding: 14px 30px;
-        font-size: 16px;
+    .birthday-banner img {
+        width: 400px;
+    }
+
+    .message-line {
+        font-size: 28px;
+    }
+
+    .curved-happy-birthday h1 {
+        font-size: 48px;
     }
 
     .flying-cake-img {
-        width: 200px;
-    }
-
-    .flag__birthday img {
-        width: 250px;
+        width: 220px;
     }
 
     .content {
         flex-direction: column;
-        padding-top: 1rem;
+        padding: 150px 20px 50px 20px;
     }
 
     .content .left,
@@ -1002,19 +1132,7 @@ body {
     }
 
     .title {
-        font-size: 2.5rem;
-    }
-
-    .title .hat {
-        right: 20px;
-    }
-
-    .title .hat img {
-        width: 90px;
-    }
-
-    .final-cake {
-        width: 140px;
+        font-size: 2rem;
     }
 
     .content .right .image {
@@ -1022,24 +1140,9 @@ body {
         height: 280px;
     }
 
-    .name span {
-        font-size: 1.3rem;
-        margin: 0 20px;
-    }
-
     .postcard-scene {
-        width: 300px;
-        height: 457px;
-    }
-
-    .postcard-hint {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
-    .balloon-left img,
-    .balloon-right img {
-        width: 60px !important;
+        width: 490px;
+        height: 322px;
     }
 }
 

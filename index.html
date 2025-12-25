@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Dark Screen -->
@@ -29,9 +29,17 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
     <!-- Main Content -->
     <div id="wrapper" class="lights-off">
-        <!-- Background decorations (hidden initially) -->
+        <!-- Banner from top -->
+        <div class="birthday-banner">
+            <img src="banner.png" alt="Happy Birthday Banner">
+        </div>
+
+        <!-- Background decorations -->
         <div class="flag__birthday">
             <img src="./images/1.png" alt="" width="350" class="flag__left">
             <img src="./images/1.png" alt="" width="350" class="flag__right">
@@ -60,7 +68,7 @@
             <img src="./images/smiley_icon.png" alt="" width="100">
         </div>
 
-        <!-- Music Button (appears after lights on) -->
+        <!-- Music Button -->
         <div id="musicBtnContainer" class="music-btn-container">
             <div class="music-icon-dance">
                 <i class="fas fa-music"></i>
@@ -71,6 +79,16 @@
                 <span>Turn On The Music</span>
                 <i class="fas fa-play"></i>
             </button>
+        </div>
+
+        <!-- Birthday Message Lines -->
+        <div id="birthdayMessage" class="birthday-message-container">
+            <div class="message-line">Hey Bella! 🎨</div>
+        </div>
+
+        <!-- Curved Happy Birthday Text -->
+        <div id="curvedHappyBirthday" class="curved-happy-birthday">
+            <h1>Happy Birthday Bella</h1>
         </div>
 
         <!-- Flying Cake with Balloons -->
@@ -116,11 +134,13 @@
                 <div class="date__of__birth">
                     <span></span>
                 </div>
+                
+                <!-- Simple Button for Postcard -->
                 <div class="btn">
                     <button id="btn__postcard">
                         <div class="mail">
-                            Open Your Postcard Bella
-                            <i class="fas fa-envelope-open-text"></i>
+                            Open Your Special Gift
+                            <i class="fas fa-gift"></i>
                         </div>
                     </button>
                 </div>
@@ -171,17 +191,19 @@
             </div>
         </div>
 
-        <!-- 3D Postcard -->
+        <!-- 3D Postcard Modal (HORIZONTAL) -->
         <div id="postcardOverlay" class="postcard-overlay">
-            <i class="fa-solid fa-xmark close-postcard"></i>
+            <button class="close-postcard" id="closePostcard">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="postcard-hint">Drag to rotate the postcard</div>
-            <div class="postcard-scene">
+            <div class="postcard-scene" id="postcardScene">
                 <div class="postcard-card" id="postcardCard">
                     <div class="postcard-face postcard-front">
-                        <img src="front.png" alt="Postcard Front">
+                        <img src="front.png" alt="Postcard Front" draggable="false">
                     </div>
                     <div class="postcard-face postcard-back">
-                        <img src="back.png" alt="Postcard Back">
+                        <img src="back.png" alt="Postcard Back" draggable="false">
                     </div>
                 </div>
             </div>
