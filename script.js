@@ -8,7 +8,6 @@ const bgMusic = document.getElementById('bgMusic');
 const birthdayMessage = document.getElementById('birthdayMessage');
 const birthdayBanner = document.querySelector('.birthday-banner');
 const flyingCake = document.getElementById('flyingCake');
-const curvedHappyBirthday = document.getElementById('curvedHappyBirthday');
 const finalCake = document.querySelector('.final-cake-container');
 const btnPostcard = document.getElementById('btn__postcard');
 const postcardOverlay = document.getElementById('postcardOverlay');
@@ -99,16 +98,11 @@ function startCakeAnimation() {
     }, 500);
     
     setTimeout(() => {
-        curvedHappyBirthday.classList.add('show');
-    }, 3000);
-    
-    setTimeout(() => {
         flyingCake.classList.add('hold-center');
         createConfetti();
     }, 6500);
     
     setTimeout(() => {
-        curvedHappyBirthday.classList.add('hide');
         flyingCake.classList.add('move-to-position');
         startMainAnimations();
     }, 10500);

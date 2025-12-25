@@ -321,56 +321,6 @@ body {
     }
 }
 
-/* ========== CURVED HAPPY BIRTHDAY ========== */
-.curved-happy-birthday {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2600;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.curved-happy-birthday.show {
-    animation: curvedFadeIn 1.5s ease-out forwards;
-}
-
-.curved-happy-birthday.hide {
-    animation: curvedFadeOut 1.5s ease-in forwards;
-}
-
-@keyframes curvedFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-@keyframes curvedFadeOut {
-    0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-30px);
-    }
-}
-
-.curved-happy-birthday h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 72px;
-    font-weight: 700;
-    color: var(--color-burgundy);
-    text-shadow: 3px 3px 6px rgba(176, 95, 95, 0.3);
-    letter-spacing: 2px;
-}
-
 /* ========== FLYING CAKE (STAYS VISIBLE) ========== */
 .flying-cake-container {
     position: fixed;
@@ -410,10 +360,10 @@ body {
 }
 
 .flying-cake-container.move-to-position {
-    animation: moveToCornerSlower 5s ease-in-out forwards;
+    animation: moveToFinalPosition 5s ease-in-out forwards;
 }
 
-@keyframes moveToCornerSlower {
+@keyframes moveToFinalPosition {
     0% {
         bottom: 40%;
         left: 50%;
@@ -422,9 +372,9 @@ body {
     }
     100% {
         bottom: auto;
-        top: 180px;
-        left: 75%;
-        transform: translate(-50%, 0) scale(0.5);
+        top: 350px;
+        left: 50%;
+        transform: translate(-50%, 0) scale(0.6);
         opacity: 0;
     }
 }
@@ -567,14 +517,15 @@ body {
     }
 }
 
-/* ========== CONTENT (PERFECTLY ALIGNED) ========== */
+/* ========== CONTENT (3 COLUMNS: LEFT, MIDDLE, RIGHT) ========== */
 .content {
     width: 100%;
     position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 180px 50px 50px 50px;
+    padding: 180px 30px 50px 30px;
+    gap: 30px;
     opacity: 0;
 }
 
@@ -591,7 +542,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    width: 33%;
+}
+
+.content .middle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 34%;
 }
 
 .content .right {
@@ -599,7 +559,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 55%;
+    width: 33%;
 }
 
 /* ========== TITLE ========== */
@@ -740,6 +700,7 @@ body {
 /* ========== BUTTON ========== */
 .left .btn {
     transform: scale(0);
+    margin-top: 30px;
 }
 
 .left .btn.show {
@@ -763,10 +724,9 @@ body {
 
 #btn__postcard {
     position: relative;
-    margin-top: 30px;
     background-color: var(--color-burgundy);
     outline: none;
-    padding: 12px 25px;
+    padding: 14px 30px;
     font-size: 1rem;
     border-radius: 50px;
     border: 3px solid var(--color-terracotta);
@@ -786,7 +746,8 @@ body {
 }
 
 #btn__postcard i {
-    margin-left: 8px;
+    margin-left: 10px;
+    font-size: 18px;
 }
 
 #btn__postcard:hover {
@@ -796,12 +757,12 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* ========== FINAL CAKE ========== */
+/* ========== MIDDLE CAKE ========== */
 .final-cake-container {
     position: relative;
-    margin-bottom: 20px;
     opacity: 0;
     transform: scale(0);
+    margin-top: 80px;
 }
 
 .final-cake-container.show {
@@ -823,7 +784,7 @@ body {
 }
 
 .final-cake {
-    width: 180px;
+    width: 200px;
     height: auto;
     filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
     animation: gentleFloat 3s ease-in-out infinite;
@@ -838,7 +799,7 @@ body {
     }
 }
 
-/* ========== IMAGE BOX ========== */
+/* ========== IMAGE BOX (HIGHER UP) ========== */
 .right .box__account {
     position: relative;
     transform: translateY(700px);
@@ -851,15 +812,15 @@ body {
 
 @keyframes topBoxImage {
     to {
-        transform: translateY(0);
+        transform: translateY(-50px);
         opacity: 1;
     }
 }
 
 .content .right .image {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -891,8 +852,8 @@ body {
 /* ========== CIRCLE BADGE ========== */
 .cricle {
     position: absolute;
-    top: 20px;
-    right: 50px;
+    top: -10px;
+    right: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -933,19 +894,19 @@ body {
     font-size: 0.7rem;
 }
 
-.fa-heart {
-    color: var(--color-heart);
-    filter: drop-shadow(0 0 3px var(--color-heart));
-    animation: heartBeat 1s infinite linear;
+.fa-star {
+    color: var(--color-terracotta);
+    filter: drop-shadow(0 0 3px var(--color-terracotta));
+    animation: starPulse 1.5s infinite linear;
 }
 
-@keyframes heartBeat {
+@keyframes starPulse {
     50% {
-        transform: scale(1.2);
+        transform: scale(1.15) rotate(18deg);
     }
 }
 
-.cricle .fa-heart {
+.cricle .fa-star {
     position: absolute;
     transform: scale(0.85);
 }
@@ -975,7 +936,7 @@ body {
 
 .right .balloon_two {
     position: absolute;
-    top: 170px;
+    top: 120px;
     right: -65px;
     z-index: -1;
     transform: rotate(10deg);
@@ -1104,6 +1065,29 @@ body {
 }
 
 /* ========== RESPONSIVE ========== */
+@media screen and (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        padding: 150px 20px 50px 20px;
+        align-items: center;
+    }
+
+    .content .left,
+    .content .middle,
+    .content .right {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .content .right .image {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .birthday-banner img {
         width: 400px;
@@ -1113,22 +1097,8 @@ body {
         font-size: 28px;
     }
 
-    .curved-happy-birthday h1 {
-        font-size: 48px;
-    }
-
     .flying-cake-img {
         width: 220px;
-    }
-
-    .content {
-        flex-direction: column;
-        padding: 150px 20px 50px 20px;
-    }
-
-    .content .left,
-    .content .right {
-        width: 100%;
     }
 
     .title {
@@ -1138,6 +1108,10 @@ body {
     .content .right .image {
         width: 280px;
         height: 280px;
+    }
+
+    .final-cake {
+        width: 160px;
     }
 
     .postcard-scene {
