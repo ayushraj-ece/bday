@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
-    <meta name="github" content="https://github.com/Aoudumber-Bade">
-    <title>Mehwish Birthday</title>
+    <title>Happy Birthday Bella 🎂</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div id="wrapper">
+    <!-- Dark Screen -->
+    <div id="darkScreen">
+        <div class="dark-content">
+            <div class="lightbulb-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <button id="lightsBtn" class="aesthetic-btn">
+                <span>Turn On The Lights</span>
+                <i class="fas fa-lightbulb"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Content -->
+    <div id="wrapper" class="lights-off">
+        <!-- Background decorations (hidden initially) -->
         <div class="flag__birthday">
             <img src="./images/1.png" alt="" width="350" class="flag__left">
             <img src="./images/1.png" alt="" width="350" class="flag__right">
         </div>
+        
+        <div class="decorate_star star1"></div>
+        <div class="decorate_star star2"></div>
+        <div class="decorate_star star3"></div>
+        <div class="decorate_star star4"></div>
+        <div class="decorate_star star5"></div>
+        
+        <div class="decorate_flower--one">
+            <img width="25" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--two">
+            <img width="25" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--three">
+            <img width="25" src="./images/decorate_flower.png" alt="">
+        </div>
+        
+        <div class="decorate_bottom">
+            <img src="./images/decorate.png" alt="" width="100">
+        </div>
+        <div class="smiley__icon">
+            <img src="./images/smiley_icon.png" alt="" width="100">
+        </div>
+
+        <!-- Music Button (appears after lights on) -->
+        <div id="musicBtnContainer" class="music-btn-container">
+            <div class="music-icon-dance">
+                <i class="fas fa-music"></i>
+                <i class="fas fa-music"></i>
+                <i class="fas fa-music"></i>
+            </div>
+            <button id="musicBtn" class="aesthetic-btn">
+                <span>Turn On The Music</span>
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+
+        <!-- Flying Cake with Balloons -->
+        <div id="flyingCake" class="flying-cake-container">
+            <div class="balloon-left">
+                <div class="balloon-string"></div>
+                <img src="./images/balloon1.png" width="80" alt="">
+            </div>
+            <div class="cake-wrapper">
+                <img src="cake.gif" alt="Birthday Cake" class="flying-cake-img">
+            </div>
+            <div class="balloon-right">
+                <div class="balloon-string"></div>
+                <img src="./images/balloon2.png" width="80" alt="">
+            </div>
+        </div>
+
+        <!-- Main Content -->
         <div class="content">
             <div class="left">
                 <div class="title">
                     <h1 class="happy">
-                        <span style="--t: 4s;">H</span>
-                        <span style="--t: 4.2s;">a</span>
-                        <span style="--t: 4.4s;">p</span>
-                        <span style="--t: 4.6s;">p</span>
-                        <span style="--t: 4.8s;">y</span>
+                        <span style="--t: 0.5s;">H</span>
+                        <span style="--t: 0.7s;">a</span>
+                        <span style="--t: 0.9s;">p</span>
+                        <span style="--t: 1.1s;">p</span>
+                        <span style="--t: 1.3s;">y</span>
                     </h1>
                     <h1 class="birthday">
-                        <span style="--t: 5s;">B</span>
-                        <span style="--t: 5.2s;">i</span>
-                        <span style="--t: 5.4s;">r</span>
-                        <span style="--t: 5.6s;">t</span>
-                        <span style="--t: 5.8s;">h</span>
-                        <span style="--t: 6s;">d</span>
-                        <span style="--t: 6.2s;">a</span>
-                        <span style="--t: 6.4s;">y</span>
+                        <span style="--t: 1.5s;">B</span>
+                        <span style="--t: 1.7s;">i</span>
+                        <span style="--t: 1.9s;">r</span>
+                        <span style="--t: 2.1s;">t</span>
+                        <span style="--t: 2.3s;">h</span>
+                        <span style="--t: 2.5s;">d</span>
+                        <span style="--t: 2.7s;">a</span>
+                        <span style="--t: 2.9s;">y</span>
                     </h1>
                     <div class="hat">
                         <img src="./images/hat.png" alt="" width="130">
@@ -52,23 +117,28 @@
                     <span></span>
                 </div>
                 <div class="btn">
-                    <button id="btn__letter">
+                    <button id="btn__postcard">
                         <div class="mail">
-                            Click Here Mehwish
-                            <i class="fa-regular fa-envelope"></i>
+                            Open Your Postcard Bella
+                            <i class="fas fa-envelope-open-text"></i>
                         </div>
                     </button>
-
                 </div>
             </div>
+            
             <div class="right">
+                <!-- Final Cake Position -->
+                <div class="final-cake-container">
+                    <img src="cake.gif" alt="Birthday Cake" class="final-cake">
+                </div>
+                
                 <div class="box__account">
                     <div class="image">
-                        <img src="./images/unnamed.png" alt="">
+                        <img src="./images/unnamed.png" alt="Bella">
                     </div>
                     <div class="name">
                         <i class="fa-solid fa-heart"></i>
-                        <span>Dear Mehwish</span>
+                        <span>Dear Bella</span>
                         <i class="fa-solid fa-heart"></i>
                     </div>
                     <div class="balloon_one">
@@ -100,164 +170,25 @@
                 </div>
             </div>
         </div>
-        <div class="decorate_star star1" style="--t: 15s;"></div>
-        <div class="decorate_star star2" style="--t: 15.2s;"></div>
-        <div class="decorate_star star3" style="--t: 15.4s;"></div>
-        <div class="decorate_star star4" style="--t: 15.6s;"></div>
-        <div class="decorate_star star5" style="--t: 15.8s;"></div>
-        <div class="decorate_flower--one" style="--t: 15s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--two" style="--t: 15.3s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_flower--three" style="--t: 15.6s;">
-            <img width="20" src="./images/decorate_flower.png" alt="">
-        </div>
-        <div class="decorate_bottom">
-            <img src="./images/decorate.png" alt="" width="100">
-        </div>
-        <div class="smiley__icon">
-            <img src="./images/smiley_icon.png" alt="" width="100">
-        </div>
 
-
-        <div class="boxMail">
-            <i class="fa-solid fa-xmark"></i>
-            <div class="boxMail-container">
-                <div class="card1">
-                    <div class="userImg">
-                        <img src="images/unnamed.png" alt="">
+        <!-- 3D Postcard -->
+        <div id="postcardOverlay" class="postcard-overlay">
+            <i class="fa-solid fa-xmark close-postcard"></i>
+            <div class="postcard-hint">Drag to rotate the postcard</div>
+            <div class="postcard-scene">
+                <div class="postcard-card" id="postcardCard">
+                    <div class="postcard-face postcard-front">
+                        <img src="front.png" alt="Postcard Front">
                     </div>
-                    <h4 class="username">To: Mehwish 💖<span class="underline"></span></h4>
-
-                    <h3>Happy Birthday</h3>
-                    <div class="imageCute">
-                        <img src="cute1.png" alt="">
-                    </div>
-                </div>
-                <div class="card2">
-                    <div class="card2-content">
-                        <h3>To You!</h3>
-                        <h2>Happy birthday 🥳🎂🥳 chanda the day you come into my life I was not really much attached to
-                            you but day by day you became close to my heart . And now you are truly my younger sister. I
-                            wish I could remove some of the pain from your life which you are bearing alone. But you're
-                            always welcome 🤗 you can talk anytime you want to talk specially those which you can't say
-                            to others. And this year your all dreams come true . I wish that your
-                            brother could wish you but if couldn't wish on him behalf I am wishing you happy birthday
-                            🎈🎂🎈 sana . Don't be Sad ok be happy 😌
-                        </h2>
-
-                        <div class="imageCute2">
-                            <img src="cute2.png" alt="">
-                        </div>
+                    <div class="postcard-face postcard-back">
+                        <img src="back.png" alt="Postcard Back">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
-<script>
-    let datetxt = "27 May";
-    let datatxtletter = "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
-    let titleLetter = "To you";
-    let charArrDate = datetxt.split('');
-    let charArrDateLetter = datatxtletter.split('');
-    let charArrTitle = titleLetter.split('');
-    let currentIndex = 0;
-    let currentIndexLetter = 0;
-    let currentIndexTitle = 0;
-    let date__of__birth = document.querySelector(".date__of__birth span");
-    let text__letter = document.querySelector(".text__letter p");
-    setTimeout(function () {
-        timeDatetxt = setInterval(function () {
-            if (currentIndex < charArrDate.length) {
-                date__of__birth.textContent += charArrDate[currentIndex];
-                currentIndex++;
-            }
-            else {
-                let i = document.createElement("i");
-                i.className = "fa-solid fa-star"
-                document.querySelector(".date__of__birth").prepend(i)
-                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
-                clearInterval(timeDatetxt)
-            }
-        }, 100)
-    }, 12000)
-
-    var intervalContent;
-    var intervalTitle;
-    $("#btn__letter").on("click", function () {
-        $(".box__letter").slideDown()
-        setTimeout(function () {
-            $(".letter__border").slideDown();
-        }, 1000)
-        setTimeout(function () {
-            intervalTitle = setInterval(function () {
-                if (currentIndexTitle < charArrTitle.length) {
-                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
-                    let i = document.createElement("i");
-                    i.className = "fa-solid fa-heart"
-                    document.querySelector(".title__letter").appendChild(i)
-                    currentIndexTitle++;
-                }
-                else {
-                    clearInterval(intervalTitle)
-                }
-            }, 100)
-        }, 2000)
-        setTimeout(function () {
-            document.querySelector("#heart__letter").classList.add("animationOp");
-            document.querySelector(".love__img").classList.add("animationOp");
-            document.querySelector("#mewmew").classList.add("animationOp");
-        }, 2800)
-        setTimeout(function () {
-            document.querySelectorAll(".heart").forEach((item) => {
-                item.classList.add("animation")
-            })
-        }, 3500)
-        setTimeout(function () {
-            intervalContent = setInterval(function () {
-                if (currentIndexLetter < charArrDateLetter.length) {
-                    text__letter.textContent += charArrDateLetter[currentIndexLetter];
-                    currentIndexLetter++;
-                }
-                else {
-                    clearInterval(intervalContent)
-                }
-            }, 50)
-        }, 6000)
-    })
-    $(".close").on("click", function () {
-        clearInterval(intervalContent)
-        document.querySelector(".title__letter").textContent = "";
-        text__letter.textContent = "";
-        currentIndexLetter = 0
-        currentIndexTitle = 0
-        document.querySelector("#heart__letter").classList.remove("animationOp");
-        document.querySelector(".love__img").classList.remove("animationOp");
-        document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item) => {
-            item.classList.remove("animation")
-        })
-        $(".box__letter").slideUp();
-        $(".letter__border").slideUp();
-    })
-
-
-
-    let mailBox = document.querySelector('.mail')
-    let boxmail = document.querySelector('.boxMail')
-    var close = document.querySelector('.fa-xmark')
-    mailBox.onclick = function () {
-        mailBox.classList.toggle('active')
-        boxmail.classList.add('active')
-    }
-
-    close.addEventListener('click', function () {
-        boxmail.classList.remove('active')
-    })
-</script>
-
 </html>
+
