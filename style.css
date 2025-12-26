@@ -474,7 +474,7 @@ body {
 }
 
 .balloon-string {
-    width: 2px;                     /* String thickness - BIGGER = thicker string */
+    width: 0px;                     /* String thickness - BIGGER = thicker string */
     height: 100px;                  /* String length - BIGGER = longer string */
     background: linear-gradient(to bottom, #666, transparent);
     position: absolute;
@@ -488,7 +488,7 @@ body {
 }
 
 .flying-cake-img {
-    width: 300px;                   /* FLYING CAKE SIZE:
+    width: 500px;                   /* FLYING CAKE SIZE:
                                        - BIGGER = bigger cake
                                        - SMALLER = smaller cake
                                        - Try: 350px for bigger, 250px for smaller */
