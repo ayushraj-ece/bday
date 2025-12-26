@@ -22,12 +22,26 @@ const postcardScene = document.getElementById('postcardScene');
 const customGifsContainer = document.getElementById('customGifsContainer');
 
 // Message sequence
+//const messages = [
+   // "Hey Bella! 🎨",
+   // "Today is your special day! 🎉",
+   // "Time to celebrate YOU! 🎂",
+    //"Let's make it magical! ✨"
+//]; //
 const messages = [
-    "Hey Bella! 🎨",
-    "Today is your special day! 🎉",
-    "Time to celebrate YOU! 🎂",
-    "Let's make it magical! ✨"
+  "Hey Bella! 🎨",
+  "Today is 27 December, and it’s your Birthday!",
+  "So I just wanted to take a moment to wish you well.",
+  "I made this little page as a simple way to say that!",
+  "Even from miles away, this felt like a nice thing to do.",
+  "I hope the day is treating you kindly.",
+  "And that you get some time to enjoy it properly!",
+  "Keep creating and sharing your beautiful art.",
+  "Wishing you a really good year ahead!",
+  "Wishing you a very Happy Birthday from miles away, Bella! 🎉"
 ];
+
+
 let currentMessageIndex = 0;
 
 // Date text

@@ -379,19 +379,17 @@ body {
    - Change "left" to move LEFT/RIGHT
    - Change "bottom" in animation to move UP/DOWN
 /* ========================================== */
+/* FLYING CAKE (CAKE 1) - The cake that flies up with balloons */
+/* ========================================== */
 .flying-cake-container {
     position: fixed;
-    bottom: -500px;                 /* Starting position (hidden below screen) */
-    left: 50%;                      /* HORIZONTAL POSITION:
-                                       - 50% = CENTER
-                                       - 60% = MORE RIGHT
-                                       - 40% = MORE LEFT
-                                       - Try any % from 0% to 100% */
+    bottom: -500px;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 2700;
     display: flex;
     align-items: flex-end;
-    gap: 20px;                      /* Space between balloons and cake */
+    gap: 20px;
     opacity: 0;
 }
 
@@ -401,19 +399,14 @@ body {
 
 @keyframes flyUpCakeSlower {
     0% {
-        bottom: -500px;             /* Start position (off screen) */
+        bottom: -500px;
         opacity: 0;
     }
     15% {
         opacity: 1;
     }
     100% {
-        bottom: 40%;                /* FINAL HEIGHT POSITION:
-                                       - BIGGER % = HIGHER on screen
-                                       - SMALLER % = LOWER on screen
-                                       - 50% = middle of screen
-                                       - 60% = higher up
-                                       - 30% = lower down */
+        bottom: 40%;
         opacity: 1;                 
         transform: translate(-50%, 50%);
     }
@@ -436,14 +429,43 @@ body {
         transform: translate(-50%, 50%) scale(1);
         opacity: 1;
     }
-    100% {
-        bottom: auto;
-        top: 350px;                 /* Where cake goes before disappearing */
+    50% {
+        /* Fade out GRADUALLY at current position */
+        bottom: 40%;
         left: 50%;
-        transform: translate(-50%, 0) scale(0.6);
+        transform: translate(-50%, 50%) scale(0.6);
         opacity: 0;
     }
+    51% {
+        /* Jump to final position while invisible */
+        bottom: auto;
+        top: 350px;
+        left: 50%;
+        transform: translate(-50%, 0) scale(0.3);
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        /* Stay hidden */
+        bottom: auto;
+        top: 350px;
+        left: 50%;
+        transform: translate(-50%, 0) scale(0.3);
+        opacity: 0;
+        visibility: hidden;
+    }
 }
+
+.cake-wrapper {
+    position: relative;
+}
+
+.flying-cake-img {
+    width: 500px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
 
 /* ========================================== */
 /* BALLOONS - Balloons attached to flying cake */
