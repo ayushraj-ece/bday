@@ -1385,9 +1385,229 @@ body {
     transform: rotateY(180deg);     
 }
 
-/* ========================================== */
-/* RESPONSIVE - TABLET SIZE (Screens 1200px wide or smaller) */
-/* ========================================== */
+/* ============================================================ */
+/* ============================================================ */
+/*           CUSTOM CUTE GIF DECORATIONS - 10 PRE-MADE         */
+/*  These appear SAME TIME as confetti (after messages end)    */
+/* ============================================================ */
+/* ============================================================ */
+
+/* GIF CONTAINER - DON'T CHANGE THIS */
+.custom-gifs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+.custom-gifs-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* BASE GIF STYLE - DON'T CHANGE THIS */
+.gif-item {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.5);
+}
+.gif-item.show {
+    animation: gifPopIn 0.8s ease-out forwards;
+}
+@keyframes gifPopIn {
+    0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+    60% { transform: scale(1.1) rotate(5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.gif-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+}
+
+/* ============================================================ */
+/* GIF 1 - cat.gif (ACTIVE)                                     */
+/* ============================================================ */
+.gif-item-1 {
+    top: 720px;              /* UP/DOWN: Smaller=HIGHER, Bigger=LOWER */
+    left: 450px;              /* LEFT/RIGHT: Smaller=LEFT, Bigger=RIGHT */
+    width: 250px;            /* SIZE: Bigger number=BIGGER gif */
+    animation-delay: 0.5s;   /* DELAY: How long to wait before appearing */
+}
+.gif-item-1.show {
+    animation: gifPopIn 0.8s 0.5s ease-out forwards, gifFloat1 3s 1.5s ease-in-out infinite;
+}
+/*@keyframes gifFloat1 {
+    0%, 100% { transform: scale(1) translateY(0px) rotate(0deg); }
+    50% { transform: scale(1) translateY(-15px) rotate(3deg); }
+}*/
+
+/* ============================================================ */
+/* GIF 2 - cat1.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+.gif-item-2 {
+     top: 830px;              /*UP/DOWN: Change this */
+     left: 1000px;             /*LEFT/RIGHT: Change this */
+     width: 140px;            /*SIZE: Change this */
+     animation-delay: 0.8s;   /*DELAY: Change this */
+}
+.gif-item-2.show { 
+     animation: gifPopIn 0.8s 0.8s ease-out forwards, gifFloat2 2.5s 1.8s ease-in-out infinite;
+} 
+/*@keyframes gifFloat2 { 
+     0%, 100% { transform: scale(1) translateY(0px) rotate(0deg); } 
+     50% { transform: scale(1.05) translateY(-20px) rotate(-3deg); } 
+} */
+
+/* ============================================================ */
+/* GIF 3 - cat2.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+.gif-item-3 {
+     top: 780px;              /*UP/DOWN: Change this */
+     right: 200px;            /*RIGHT: Use right instead of left */
+     width: 220px;            /*SIZE: Change this */
+    animation-delay: 1.2s;   /*DELAY: Change this */
+}
+.gif-item-3.show { 
+     animation: gifPopIn 0.8s 1.2s ease-out forwards, gifBounce3 2s 2.2s ease-in-out infinite; 
+} 
+/* @keyframes gifBounce3 { */
+/*     0%, 100% { transform: scale(1) translateY(0px); } */
+/*     50% { transform: scale(1.1) translateY(-25px); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 4 - cat3.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+.gif-item-4 { 
+     bottom: 200px;           /*BOTTOM: Position from bottom instead of top */
+     left: 150px;             /*LEFT/RIGHT: Change this */
+     width: 110px;            /*SIZE: Change this */
+     animation-delay: 1.5s;   /*DELAY: Change this */
+} 
+.gif-item-4.show {
+     animation: gifPopIn 0.8s 1.5s ease-out forwards, gifWiggle4 2s 2.5s ease-in-out infinite;
+} 
+/* @keyframes gifWiggle4 { */
+/*     0%, 100% { transform: rotate(0deg); } */
+/*     25% { transform: rotate(-8deg); } */
+/*     75% { transform: rotate(8deg); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 5 - cat4.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+.gif-item-5 {
+     top: -9px;              /*UP/DOWN: Change this */
+    left: 100px;             /*LEFT/RIGHT: Change this */
+     width: 180px;            /*SIZE: Change this */
+     animation-delay: 0.3s;   /*DELAY: Change this */
+} 
+.gif-item-5.show { 
+    animation: gifPopIn 0.8s 0.3s ease-out forwards, gifSpin5 4s 1.3s linear infinite; 
+}
+/* @keyframes gifSpin5 { */
+/*     0% { transform: rotate(0deg); } */
+/*     100% { transform: rotate(360deg); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 6 - cat5.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+/* .gif-item-6 { */
+/*     top: 300px;              UP/DOWN: Change this */
+/*     right: 250px;            RIGHT: Change this */
+/*     width: 90px;             SIZE: Change this */
+/*     animation-delay: 2s;     DELAY: Change this */
+/* } */
+/* .gif-item-6.show { */
+/*     animation: gifPopIn 0.8s 2s ease-out forwards, gifPulse6 1.5s 3s ease-in-out infinite; */
+/* } */
+/* @keyframes gifPulse6 { */
+/*     0%, 100% { transform: scale(1); } */
+/*     50% { transform: scale(1.15); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 7 - cat6.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+/* .gif-item-7 { */
+/*     bottom: 300px;           BOTTOM: Change this */
+/*     right: 120px;            RIGHT: Change this */
+/*     width: 150px;            SIZE: Change this */
+/*     animation-delay: 1s;     DELAY: Change this */
+/* } */
+/* .gif-item-7.show { */
+/*     animation: gifPopIn 0.8s 1s ease-out forwards, gifSwing7 3s 2s ease-in-out infinite; */
+/* } */
+/* @keyframes gifSwing7 { */
+/*     0%, 100% { transform: rotate(0deg) translateX(0px); } */
+/*     25% { transform: rotate(5deg) translateX(10px); } */
+/*     75% { transform: rotate(-5deg) translateX(-10px); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 8 - cat7.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+/* .gif-item-8 { */
+/*     top: 180px;              UP/DOWN: Change this */
+/*     left: 400px;             LEFT/RIGHT: Change this */
+/*     width: 125px;            SIZE: Change this */
+/*     animation-delay: 1.8s;   DELAY: Change this */
+/* } */
+/* .gif-item-8.show { */
+/*     animation: gifPopIn 0.8s 1.8s ease-out forwards, gifFloat8 2.8s 2.8s ease-in-out infinite; */
+/* } */
+/* @keyframes gifFloat8 { */
+/*     0%, 100% { transform: translateY(0px) scale(1); } */
+/*     50% { transform: translateY(-18px) scale(1.08); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 9 - cat8.gif (UNCOMMENT CSS BELOW to use)               */
+/* ============================================================ */
+/* .gif-item-9 { */
+/*     top: 450px;              UP/DOWN: Change this */
+/*     right: 350px;            RIGHT: Change this */
+/*     width: 105px;            SIZE: Change this */
+/*     animation-delay: 0.6s;   DELAY: Change this */
+/* } */
+/* .gif-item-9.show { */
+/*     animation: gifPopIn 0.8s 0.6s ease-out forwards, gifShake9 2s 1.6s ease-in-out infinite; */
+/* } */
+/* @keyframes gifShake9 { */
+/*     0%, 100% { transform: translateX(0px); } */
+/*     25% { transform: translateX(-5px); } */
+/*     75% { transform: translateX(5px); } */
+/* } */
+
+/* ============================================================ */
+/* GIF 10 - cat9.gif (UNCOMMENT CSS BELOW to use)              */
+/* ============================================================ */
+/* .gif-item-10 { */
+/*     bottom: 150px;           BOTTOM: Change this */
+/*     left: 250px;             LEFT/RIGHT: Change this */
+/*     width: 135px;            SIZE: Change this */
+/*     animation-delay: 2.5s;   DELAY: Change this */
+/* } */
+/* .gif-item-10.show { */
+/*     animation: gifPopIn 0.8s 2.5s ease-out forwards, gifBob10 3s 3.5s ease-in-out infinite; */
+/* } */
+/* @keyframes gifBob10 { */
+/*     0%, 100% { transform: translateY(0px) rotate(0deg); } */
+/*     33% { transform: translateY(-10px) rotate(-5deg); } */
+/*     66% { transform: translateY(-5px) rotate(5deg); } */
+/* } */
+
+/* ============================================================ */
+/* RESPONSIVE - TABLETS                                         */
+/* ============================================================ */
 @media screen and (max-width: 1200px) {
     .content {
         gap: 30px;                  
@@ -1419,14 +1639,16 @@ body {
     .cricle {
         right: -20px;               
     }
+    
+    .gif-item-1 { width: 100px; top: 200px; left: 50px; }
 }
 
-/* ========================================== */
-/* RESPONSIVE - PHONE SIZE (Screens 768px wide or smaller) */
-/* ========================================== */
+/* ============================================================ */
+/* RESPONSIVE - PHONES                                          */
+/* ============================================================ */
 @media screen and (max-width: 768px) {
     .content {
-        flex-direction: column;     /* Stack vertically instead of side by side */
+        flex-direction: column;     
         padding: 140px 20px 50px 20px;
         align-items: center;
         gap: 40px;
@@ -1490,7 +1712,7 @@ body {
 
     .balloon_one,
     .balloon_two {
-        display: none;              /* Hide balloons on phone */
+        display: none;              
     }
 
     .cricle {
@@ -1502,11 +1724,13 @@ body {
         bottom: auto;
         top: 550px;
     }
+    
+    .custom-gifs-container { display: none; }
 }
 
-/* ========================================== */
-/* RESPONSIVE - SMALL PHONE (Screens 480px wide or smaller) */
-/* ========================================== */
+/* ============================================================ */
+/* RESPONSIVE - SMALL PHONES                                    */
+/* ============================================================ */
 @media screen and (max-width: 480px) {
     .title {
         font-size: 2.2rem;          

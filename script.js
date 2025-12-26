@@ -1,136 +1,169 @@
-// DOM Elements
+// Get elements
 const darkScreen = document.getElementById('darkScreen');
 const wrapper = document.getElementById('wrapper');
 const lightsBtn = document.getElementById('lightsBtn');
-const musicBtnContainer = document.getElementById('musicBtnContainer');
 const musicBtn = document.getElementById('musicBtn');
+const musicBtnContainer = document.getElementById('musicBtnContainer');
 const bgMusic = document.getElementById('bgMusic');
 const birthdayMessage = document.getElementById('birthdayMessage');
-const birthdayBanner = document.querySelector('.birthday-banner');
 const flyingCake = document.getElementById('flyingCake');
-const finalCake = document.querySelector('.final-cake-container');
+const confettiContainer = document.getElementById('confetti-container');
+const banner = document.querySelector('.birthday-banner');
+const dateOfBirth = document.querySelector('.date__of__birth span');
+
+// Postcard elements
 const btnPostcard = document.getElementById('btn__postcard');
 const postcardOverlay = document.getElementById('postcardOverlay');
 const closePostcard = document.getElementById('closePostcard');
 const postcardCard = document.getElementById('postcardCard');
-const confettiContainer = document.getElementById('confetti-container');
-const dateOfBirth = document.querySelector('.date__of__birth span');
+const postcardScene = document.getElementById('postcardScene');
 
-// Birthday messages
+// Custom GIFs Container
+const customGifsContainer = document.getElementById('customGifsContainer');
+
+// Message sequence
 const messages = [
     "Hey Bella! 🎨",
-    "Today is December 27, 2025",
-    "Your special day! 🎂",
-    "I'm miles away in Delhi",
-    "And you're shining in Gangtok ✨",
-    "Couldn't send a physical present",
-    "So I created this for you 💝",
-    "Keep creating your beautiful art",
-    "May all your dreams come true",
-    "Happy Birthday from miles away! 🎉"
+    "Today is your special day! 🎉",
+    "Time to celebrate YOU! 🎂",
+    "Let's make it magical! ✨"
 ];
-
 let currentMessageIndex = 0;
 
-// Birthday Date
-let birthdayDate = "27 December";
-let charArrDate = birthdayDate.split('');
+// Date text
+const dateText = "27 December";
+const charArrDate = dateText.split("");
 let currentIndex = 0;
 
-// Step 1: Turn on the lights
+// Confetti interval
+let confettiInterval;
+
+// Turn on lights
 lightsBtn.addEventListener('click', function() {
+    // Hide dark screen
     darkScreen.classList.add('hidden');
+    
+    // Show main wrapper with lights on
     wrapper.classList.remove('lights-off');
     wrapper.classList.add('lights-on');
     
+    // Show music button after 2 seconds (NO BANNER YET)
     setTimeout(() => {
         musicBtnContainer.classList.add('show');
-    }, 1500);
+    }, 2000);
 });
 
-// Step 2: Turn on the music
+// Turn on music
 musicBtn.addEventListener('click', function() {
-    bgMusic.play().catch(error => {
-        console.log('Audio playback failed:', error);
-    });
+    // Play music
+    bgMusic.play().catch(e => console.log("Audio play failed:", e));
     
+    // Hide music button
     musicBtnContainer.classList.add('hide');
     
+    // Show birthday messages immediately
     setTimeout(() => {
         showNextMessage();
     }, 1000);
 });
 
-// Show messages one by one
+// Show birthday messages one by one
 function showNextMessage() {
     if (currentMessageIndex < messages.length) {
-        const messageContainer = birthdayMessage.querySelector('.message-line');
+        const messageElement = birthdayMessage.querySelector('.message-line');
         
-        birthdayMessage.classList.add('show');
-        
-        messageContainer.textContent = messages[currentMessageIndex];
-        messageContainer.classList.add('show');
+        // Hide previous message
+        if (currentMessageIndex > 0) {
+            messageElement.classList.remove('show');
+            messageElement.classList.add('hide');
+        }
         
         setTimeout(() => {
-            messageContainer.classList.remove('show');
-            messageContainer.classList.add('hide');
+            // Update message text
+            messageElement.textContent = messages[currentMessageIndex];
             
+            // Show container
+            birthdayMessage.classList.add('show');
+            
+            // Show message
+            messageElement.classList.remove('hide');
+            messageElement.classList.add('show');
+            
+            currentMessageIndex++;
+            
+            // Show next message after 2 seconds
             setTimeout(() => {
-                messageContainer.classList.remove('hide');
-                currentMessageIndex++;
                 showNextMessage();
-            }, 600);
-        }, 3500);
+            }, 2000);
+        }, currentMessageIndex > 0 ? 600 : 0);
     } else {
-        birthdayMessage.classList.add('hide');
+        // All messages shown, hide container
         setTimeout(() => {
-            startCakeAnimation();
-        }, 1000);
+            birthdayMessage.classList.add('hide');
+            
+            // START CONFETTI, BANNER, AND GIFS TOGETHER
+            setTimeout(() => {
+                startConfettiBannerAndGifs();
+            }, 1000);
+        }, 2000);
     }
 }
 
-// Start cake animation
-function startCakeAnimation() {
-    birthdayBanner.classList.add('show');
+// ========================================== //
+// START CONFETTI, BANNER, AND GIFS TOGETHER  //
+// This happens AFTER messages disappear      //
+// ========================================== //
+function startConfettiBannerAndGifs() {
+    // Start confetti (keeps falling forever)
+    createConfetti();
+    confettiInterval = setInterval(createConfetti, 3000);
     
-    setTimeout(() => {
-        flyingCake.classList.add('fly-up');
-    }, 500);
+    // Show banner
+    banner.classList.add('show');
     
+    // Show custom GIFs
+    showCustomGifs();
+    
+    // Start flying cake animation
     setTimeout(() => {
+        startFlyingCake();
+    }, 1000);
+}
+
+// Show custom GIFs
+function showCustomGifs() {
+    const gifsContainer = document.getElementById('customGifsContainer');
+    const gifItems = document.querySelectorAll('.gif-item');
+    
+    // Show container
+    gifsContainer.classList.add('show');
+    
+    // Show each GIF with their individual delays
+    gifItems.forEach((gif) => {
+        gif.classList.add('show');
+    });
+}
+
+// Flying cake animation
+function startFlyingCake() {
+    flyingCake.classList.add('fly-up');
+    
+    // Hold at center for 3 seconds
+    setTimeout(() => {
+        flyingCake.classList.remove('fly-up');
         flyingCake.classList.add('hold-center');
-        createConfetti();
-    }, 6500);
-    
-    setTimeout(() => {
-        flyingCake.classList.add('move-to-position');
-        startMainAnimations();
-    }, 10500);
-    
-    setTimeout(() => {
-        finalCake.classList.add('show');
-    }, 14500);
-}
-
-// Create confetti
-function createConfetti() {
-    const colors = ['#b05f5f', '#d98b7f', '#c88f5f', '#8b9b7e', '#e8d5c4'];
-    const confettiCount = 200;
-    
-    for (let i = 0; i < confettiCount; i++) {
+        
+        // Move to final position
         setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
-            confetti.style.setProperty('--duration', (Math.random() * 3 + 3) + 's');
-            confetti.style.setProperty('--rotation', (Math.random() * 720 - 360) + 'deg');
+            flyingCake.classList.remove('hold-center');
+            flyingCake.classList.add('move-to-position');
             
-            confettiContainer.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 6000);
-        }, i * 20);
-    }
+            // Start main animations
+            setTimeout(() => {
+                startMainAnimations();
+            }, 1000);
+        }, 3000);
+    }, 6000);
 }
 
 // Start main animations (FASTER TIMING)
@@ -152,6 +185,11 @@ function startMainAnimations() {
     setTimeout(() => {
         document.querySelector('.hat').classList.add('animate');
     }, 3500);
+    
+    // Show final cake behind birthday text
+    setTimeout(() => {
+        document.querySelector('.final-cake-container').classList.add('show');
+    }, 4000);
     
     // FASTER DATE APPEARANCE (was 9s, now 6s)
     setTimeout(() => {
@@ -186,70 +224,105 @@ function startMainAnimations() {
     }, 7500);
 }
 
+// Create confetti (keeps falling forever)
+function createConfetti() {
+    const colors = ['#b05f5f', '#d98b7f', '#c88f5f', '#8b9b7e', '#e8d5c4'];
+    const confettiCount = 100;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+        confetti.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+        confetti.style.setProperty('--rotation', (Math.random() * 360) + 'deg');
+        confetti.style.animationDelay = (Math.random() * 2) + 's';
+        confettiContainer.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+    }
+}
+
+// ========================================== //
+// 3D POSTCARD FUNCTIONALITY                  //
+// ========================================== //
+
 // Open postcard
 btnPostcard.addEventListener('click', function() {
     postcardOverlay.classList.add('active');
 });
 
 // Close postcard
-closePostcard.addEventListener('click', function(e) {
-    e.stopPropagation();
+closePostcard.addEventListener('click', function() {
     postcardOverlay.classList.remove('active');
 });
 
-// 3D Postcard Rotation
-let isDragging = false;
-let previousMouseX = 0;
-let previousMouseY = 0;
-let rotationY = 15;
-let rotationX = -15;
-
-postcardCard.addEventListener('mousedown', startDrag);
-postcardCard.addEventListener('touchstart', startDrag, { passive: false });
-
-function startDrag(e) {
-    isDragging = true;
-    const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-    const clientY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
-    previousMouseX = clientX;
-    previousMouseY = clientY;
-}
-
-document.addEventListener('mousemove', drag);
-document.addEventListener('touchmove', drag, { passive: false });
-
-function drag(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    
-    const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-    const clientY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
-    
-    const deltaX = clientX - previousMouseX;
-    const deltaY = clientY - previousMouseY;
-    
-    rotationY += deltaX * 0.5;
-    rotationX -= deltaY * 0.5;
-    
-    rotationX = Math.max(-90, Math.min(90, rotationX));
-    
-    postcardCard.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    
-    previousMouseX = clientX;
-    previousMouseY = clientY;
-}
-
-document.addEventListener('mouseup', stopDrag);
-document.addEventListener('touchend', stopDrag);
-
-function stopDrag() {
-    isDragging = false;
-}
-
-// Keep music playing
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden && bgMusic.paused && wrapper.classList.contains('lights-on')) {
-        bgMusic.play().catch(error => console.log('Resume failed:', error));
+// Close on overlay click
+postcardOverlay.addEventListener('click', function(e) {
+    if (e.target === postcardOverlay) {
+        postcardOverlay.classList.remove('active');
     }
+});
+
+// 3D Rotation with mouse
+let isDragging = false;
+let startX, startY;
+let currentRotationX = -15;
+let currentRotationY = 15;
+
+postcardCard.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    postcardCard.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+    
+    currentRotationY += deltaX * 0.5;
+    currentRotationX -= deltaY * 0.5;
+    
+    postcardCard.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+    
+    startX = e.clientX;
+    startY = e.clientY;
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+    postcardCard.style.cursor = 'grab';
+});
+
+// Touch support for mobile
+postcardCard.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const deltaX = e.touches[0].clientX - startX;
+    const deltaY = e.touches[0].clientY - startY;
+    
+    currentRotationY += deltaX * 0.5;
+    currentRotationX -= deltaY * 0.5;
+    
+    postcardCard.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+    
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchend', () => {
+    isDragging = false;
 });
 
