@@ -133,7 +133,7 @@ function createConfetti() {
     }
 }
 
-// Start main animations
+// Start main animations (FASTER TIMING)
 function startMainAnimations() {
     setTimeout(() => {
         document.querySelector('.content').classList.add('show');
@@ -153,6 +153,7 @@ function startMainAnimations() {
         document.querySelector('.hat').classList.add('animate');
     }, 3500);
     
+    // FASTER DATE APPEARANCE (was 9s, now 6s)
     setTimeout(() => {
         const dateElement = document.querySelector('.date__of__birth');
         dateElement.classList.add('show');
@@ -172,15 +173,17 @@ function startMainAnimations() {
                 }
             }, 100);
         }, 2000);
-    }, 9000);
+    }, 6000);
     
+    // FASTER CIRCLE (was 10s, now 7s)
     setTimeout(() => {
         document.querySelector('.cricle').classList.add('show');
-    }, 10000);
+    }, 7000);
     
+    // FASTER BUTTON (was 11s, now 7.5s)
     setTimeout(() => {
         document.querySelector('.btn').classList.add('show');
-    }, 11000);
+    }, 7500);
 }
 
 // Open postcard

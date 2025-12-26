@@ -321,7 +321,7 @@ body {
     }
 }
 
-/* ========== FLYING CAKE (STAYS VISIBLE) ========== */
+/* ========== FLYING CAKE ========== */
 .flying-cake-container {
     position: fixed;
     bottom: -500px;
@@ -517,15 +517,17 @@ body {
     }
 }
 
-/* ========== CONTENT (3 COLUMNS: LEFT, MIDDLE, RIGHT) ========== */
+/* ========== CONTENT (PERFECT ALIGNMENT) ========== */
 .content {
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 180px 30px 50px 30px;
-    gap: 30px;
+    padding: 180px 50px 50px 50px;
+    gap: 50px;
     opacity: 0;
 }
 
@@ -542,7 +544,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 33%;
+    flex: 1;
+    min-width: 300px;
 }
 
 .content .middle {
@@ -551,7 +554,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 34%;
+    flex: 1;
+    min-width: 250px;
 }
 
 .content .right {
@@ -559,17 +563,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 33%;
+    flex: 1;
+    min-width: 300px;
 }
 
-/* ========== TITLE ========== */
+/* ========== TITLE (BIGGER & BEAUTIFUL) ========== */
 .title {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Dancing Script", cursive;
-    font-size: 3rem;
+    font-size: 4rem;
     flex-direction: column;
     perspective: 1000px;
 }
@@ -577,14 +582,15 @@ body {
 .title .happy,
 .title .birthday {
     position: relative;
-    text-shadow: 4px 4px var(--color-black), 
-                -4px 4px var(--color-black), 
-                4px -4px var(--color-black), 
-                -4px -4px var(--color-black), 
-                4px 8px 0 var(--color-black);
+    text-shadow: 5px 5px var(--color-black), 
+                -5px 5px var(--color-black), 
+                5px -5px var(--color-black), 
+                -5px -5px var(--color-black), 
+                5px 10px 0 var(--color-black);
     font-weight: bold;
     display: flex;
     justify-content: center;
+    letter-spacing: 4px;
 }
 
 .title .happy {
@@ -616,7 +622,7 @@ body {
 
 .title .hat {
     position: absolute;
-    right: 45px;
+    right: 30px;
     top: -350px;
     transform: rotate(-40deg);
     z-index: -1;
@@ -652,7 +658,7 @@ body {
     align-items: center;
     background-color: var(--color-salmon);
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 25px;
     font-family: "Poppins", sans-serif;
     border: 3px solid var(--color-black);
     position: relative;
@@ -664,7 +670,7 @@ body {
 }
 
 .date__of__birth.show {
-    animation: dateOfBirth 5s forwards;
+    animation: dateOfBirth 4s forwards;
 }
 
 @keyframes dateOfBirth {
@@ -679,32 +685,32 @@ body {
         transform: translateY(0px);
         opacity: 1;
         visibility: visible;
-        width: 300px;
+        width: 320px;
         height: 0px;
     }
     50%, 100% {
         transform: translateY(0px);
         opacity: 1;
         visibility: visible;
-        width: 300px;
-        height: 50px;
+        width: 320px;
+        height: 55px;
     }
 }
 
 .date__of__birth span {
     font-weight: bold;
     margin: 0px 40px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 /* ========== BUTTON ========== */
 .left .btn {
     transform: scale(0);
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .left .btn.show {
-    animation: scaleCricle 2s forwards ease-in-out;
+    animation: scaleCricle 1.5s forwards ease-in-out;
 }
 
 @keyframes scaleCricle {
@@ -726,8 +732,8 @@ body {
     position: relative;
     background-color: var(--color-burgundy);
     outline: none;
-    padding: 14px 30px;
-    font-size: 1rem;
+    padding: 16px 32px;
+    font-size: 1.05rem;
     border-radius: 50px;
     border: 3px solid var(--color-terracotta);
     font-family: "Poppins", sans-serif;
@@ -746,23 +752,23 @@ body {
 }
 
 #btn__postcard i {
-    margin-left: 10px;
-    font-size: 18px;
+    margin-left: 12px;
+    font-size: 20px;
 }
 
 #btn__postcard:hover {
     background-color: var(--color-terracotta);
     border-color: var(--color-burgundy);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* ========== MIDDLE CAKE ========== */
+/* ========== MIDDLE CAKE (BIGGER) ========== */
 .final-cake-container {
     position: relative;
     opacity: 0;
     transform: scale(0);
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .final-cake-container.show {
@@ -784,9 +790,9 @@ body {
 }
 
 .final-cake {
-    width: 200px;
+    width: 250px;
     height: auto;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
     animation: gentleFloat 3s ease-in-out infinite;
 }
 
@@ -795,11 +801,11 @@ body {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-12px);
     }
 }
 
-/* ========== IMAGE BOX (HIGHER UP) ========== */
+/* ========== IMAGE BOX (PERFECTLY ALIGNED) ========== */
 .right .box__account {
     position: relative;
     transform: translateY(700px);
@@ -812,48 +818,57 @@ body {
 
 @keyframes topBoxImage {
     to {
-        transform: translateY(-50px);
+        transform: translateY(0);
         opacity: 1;
     }
 }
 
 .content .right .image {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     border: 6px solid var(--color-black);
 }
 
 .content .right .image img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
+/* ========== NAME BANNER (PERFECTLY CENTERED) ========== */
 .name {
     position: absolute;
-    padding: 0px 20px;
-    bottom: -20px;
+    padding: 8px 30px;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
     border: 3px solid var(--color-black);
     font-family: 'Dancing Script', cursive;
     background-color: var(--color-salmon);
     border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    white-space: nowrap;
 }
 
 .name span {
     font-weight: bold;
-    margin: 0px 40px;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
 }
 
 /* ========== CIRCLE BADGE ========== */
 .cricle {
     position: absolute;
-    top: -10px;
-    right: 30px;
+    top: 10px;
+    right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -861,12 +876,12 @@ body {
 }
 
 .cricle.show {
-    animation: scaleCricle 3s forwards ease-in-out;
+    animation: scaleCricle 2.5s forwards ease-in-out;
 }
 
 .text__cricle {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     background-color: var(--color-salmon);
     border-radius: 50%;
     border: 5px solid var(--color-black);
@@ -888,10 +903,11 @@ body {
     position: absolute;
     color: var(--color-black);
     transform: rotate(calc(var(--i) * 24deg));
-    transform-origin: 0 45px;
+    transform-origin: 0 50px;
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
 }
 
 .fa-star {
@@ -908,14 +924,14 @@ body {
 
 .cricle .fa-star {
     position: absolute;
-    transform: scale(0.85);
+    transform: scale(0.9);
 }
 
 /* ========== BALLOONS ========== */
 .right .balloon_one {
     position: absolute;
-    top: -70px;
-    left: -70px;
+    top: -80px;
+    left: -80px;
     animation: balloon1 2s infinite linear;
 }
 
@@ -936,8 +952,8 @@ body {
 
 .right .balloon_two {
     position: absolute;
-    top: 120px;
-    right: -65px;
+    top: 140px;
+    right: -75px;
     z-index: -1;
     transform: rotate(10deg);
     animation: balloon2 2s infinite linear;
@@ -1064,33 +1080,53 @@ body {
     transform: rotateY(180deg);
 }
 
-/* ========== RESPONSIVE ========== */
-@media screen and (max-width: 1024px) {
+/* ========== RESPONSIVE (TABLET) ========== */
+@media screen and (max-width: 1200px) {
+    .content {
+        gap: 30px;
+        padding: 160px 30px 50px 30px;
+    }
+
+    .title {
+        font-size: 3.2rem;
+    }
+
+    .content .right .image {
+        width: 320px;
+        height: 320px;
+    }
+
+    .final-cake {
+        width: 200px;
+    }
+
+    .birthday-banner img {
+        width: 500px;
+    }
+}
+
+/* ========== RESPONSIVE (PHONE) ========== */
+@media screen and (max-width: 768px) {
     .content {
         flex-direction: column;
-        padding: 150px 20px 50px 20px;
+        padding: 140px 20px 50px 20px;
         align-items: center;
+        gap: 40px;
     }
 
     .content .left,
     .content .middle,
     .content .right {
         width: 100%;
+        max-width: 400px;
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
-    .content .right .image {
-        width: 300px;
-        height: 300px;
-    }
-}
-
-@media screen and (max-width: 768px) {
     .birthday-banner img {
-        width: 400px;
+        width: 350px;
     }
 
     .message-line {
@@ -1101,22 +1137,78 @@ body {
         width: 220px;
     }
 
-    .title {
-        font-size: 2rem;
-    }
-
     .content .right .image {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
     }
 
     .final-cake {
-        width: 160px;
+        width: 180px;
+    }
+
+    .date__of__birth {
+        width: 280px !important;
+    }
+
+    .date__of__birth span {
+        font-size: 1.1rem;
+    }
+
+    .name span {
+        font-size: 1.5rem;
     }
 
     .postcard-scene {
         width: 490px;
         height: 322px;
+    }
+
+    .final-cake-container {
+        margin-top: 20px;
+    }
+
+    .balloon_one,
+    .balloon_two {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .birthday-banner img {
+        width: 280px;
+    }
+
+    .content .right .image {
+        width: 260px;
+        height: 260px;
+    }
+
+    .final-cake {
+        width: 150px;
+    }
+
+    .postcard-scene {
+        width: 370px;
+        height: 243px;
+    }
+
+    .date__of__birth {
+        width: 240px !important;
+        height: 45px !important;
+    }
+
+    .date__of__birth span {
+        font-size: 0.95rem;
+        margin: 0px 20px;
+    }
+
+    #btn__postcard {
+        padding: 14px 24px;
+        font-size: 0.95rem;
     }
 }
 
