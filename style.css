@@ -6,14 +6,17 @@
     box-sizing: border-box;
 }
 
+/* ========================================== */
+/* COLOR PALETTE - Change these to change colors throughout the site */
+/* ========================================== */
 :root {
-    --color-burgundy: #b05f5f;
-    --color-salmon: #d98b7f;
-    --color-cream: #e8d5c4;
-    --color-terracotta: #c88f5f;
-    --color-sage: #8b9b7e;
-    --color-white: #fff;
-    --color-black: #333;
+    --color-burgundy: #b05f5f;      /* Dark red/maroon color */
+    --color-salmon: #d98b7f;        /* Light pink/salmon color */
+    --color-cream: #e8d5c4;         /* Beige/cream background */
+    --color-terracotta: #c88f5f;    /* Orange/brown color */
+    --color-sage: #8b9b7e;          /* Green color */
+    --color-white: #fff;            /* Pure white */
+    --color-black: #333;            /* Dark gray (not pure black) */
 }
 
 html, body {
@@ -26,18 +29,20 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* ========== DARK SCREEN ========== */
+/* ========================================== */
+/* DARK SCREEN - The initial black screen before lights turn on */
+/* ========================================== */
 #darkScreen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0a0a0a;
+    top: 0;                         /* Stick to top edge */
+    left: 0;                        /* Stick to left edge */
+    width: 100%;                    /* Cover full screen width */
+    height: 100%;                   /* Cover full screen height */
+    background: #0a0a0a;            /* Almost black color */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
+    justify-content: center;        
+    align-items: center;            
+    z-index: 10000;                 /* Layer order - higher = on top */
     transition: opacity 1s ease, visibility 1s ease;
 }
 
@@ -51,13 +56,18 @@ body {
     text-align: center;
 }
 
+/* ========================================== */
+/* LIGHTBULB ICON - The dim lightbulb on dark screen */
+/* ========================================== */
 .lightbulb-icon {
-    margin-bottom: 50px;
+    margin-bottom: 50px;            /* Space below icon - INCREASE = more gap below */
 }
 
 .lightbulb-icon i {
-    font-size: 120px;
-    color: #2a2a2a;
+    font-size: 120px;               /* CHANGE THIS NUMBER:
+                                       - BIGGER number = BIGGER lightbulb
+                                       - Try: 150px for bigger, 90px for smaller */
+    color: #2a2a2a;                 /* Dim gray color */
     animation: dimPulse 2s ease-in-out infinite;
 }
 
@@ -72,20 +82,25 @@ body {
     }
 }
 
-/* ========== AESTHETIC BUTTONS ========== */
+/* ========================================== */
+/* BUTTONS - "Turn On Lights" and "Turn On Music" buttons */
+/* ========================================== */
 .aesthetic-btn {
     background: linear-gradient(135deg, var(--color-salmon), var(--color-burgundy));
     color: white;
     border: none;
-    padding: 18px 40px;
-    border-radius: 50px;
-    font-size: 18px;
+    padding: 18px 40px;             /* First number = TOP/BOTTOM space inside button
+                                       Second number = LEFT/RIGHT space inside button
+                                       INCREASE first = taller button
+                                       INCREASE second = wider button */
+    border-radius: 50px;            /* Roundness - BIGGER = more round, try 0px for square */
+    font-size: 18px;                /* Text size - BIGGER = bigger text */
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 12px;                      /* Space between text and icon - INCREASE for more gap */
     box-shadow: 0 10px 30px rgba(176, 95, 95, 0.4);
     transition: all 0.4s ease;
     position: relative;
@@ -108,7 +123,7 @@ body {
 }
 
 .aesthetic-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px);    /* Button lifts up on hover - INCREASE = lifts more */
     box-shadow: 0 15px 40px rgba(176, 95, 95, 0.6);
 }
 
@@ -117,17 +132,19 @@ body {
 }
 
 .aesthetic-btn i {
-    font-size: 20px;
+    font-size: 20px;                /* Icon size inside button - BIGGER = bigger icon */
 }
 
-/* ========== MAIN WRAPPER ========== */
+/* ========================================== */
+/* MAIN WRAPPER - The cream background with grid pattern */
+/* ========================================== */
 #wrapper {
     position: relative;
-    background-color: var(--color-cream);
+    background-color: var(--color-cream);  /* Background color */
     background-image: 
         linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.4) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.4) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.4) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.4) 76%, transparent 77%, transparent);
-    background-size: 80px 80px;
+    background-size: 80px 80px;     /* Grid square size - BIGGER = bigger squares */
     min-height: 100vh;
     overflow: hidden;
     transition: opacity 1s ease;
@@ -141,13 +158,22 @@ body {
     opacity: 1;
 }
 
-/* ========== BANNER ========== */
+/* ========================================== */
+/* BIRTHDAY BANNER - The "Happy Birthday" banner at top */
+/* HOW TO MOVE IT:
+   - Change "left" to move LEFT/RIGHT
+   - Change "top" in animation to move UP/DOWN
+/* ========================================== */
 .birthday-banner {
     position: fixed;
-    top: -200px;
-    left: 50%;
+    top: -200px;                    /* Starting position OFF SCREEN (hidden) */
+    left: 50%;                      /* HORIZONTAL POSITION:
+                                       - 50% = CENTER
+                                       - 60% = MORE TO RIGHT
+                                       - 40% = MORE TO LEFT
+                                       - Try any % from 0% to 100% */
     transform: translateX(-50%);
-    z-index: 3000;
+    z-index: 3000;                  
     opacity: 0;
 }
 
@@ -157,22 +183,30 @@ body {
 
 @keyframes bannerDrop {
     0% {
-        top: -200px;
+        top: -200px;                /* Start hidden above screen */
         opacity: 0;
     }
     100% {
-        top: 10px;
+        top: 10px;                  /* FINAL VERTICAL POSITION:
+                                       - SMALLER number = HIGHER on screen
+                                       - BIGGER number = LOWER on screen
+                                       - Try: 0px for very top, 50px for lower */
         opacity: 1;
     }
 }
 
 .birthday-banner img {
-    width: 600px;
+    width: 600px;                   /* BANNER SIZE:
+                                       - BIGGER number = BIGGER banner
+                                       - SMALLER number = SMALLER banner
+                                       - Try: 700px for bigger, 400px for smaller */
     height: auto;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
 }
 
-/* ========== CONFETTI ========== */
+/* ========================================== */
+/* CONFETTI - The colorful confetti pieces that fall */
+/* ========================================== */
 #confetti-container {
     position: fixed;
     top: 0;
@@ -186,8 +220,8 @@ body {
 
 .confetti {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 10px;                    /* Confetti width - BIGGER = wider pieces */
+    height: 10px;                   /* Confetti height - BIGGER = taller pieces */
     background: var(--color);
     top: -10px;
     opacity: 1;
@@ -201,11 +235,13 @@ body {
     }
 }
 
-/* ========== MUSIC BUTTON ========== */
+/* ========================================== */
+/* MUSIC BUTTON - "Turn On Music" button that appears */
+/* ========================================== */
 .music-btn-container {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%;                       /* Vertical center */
+    left: 50%;                      /* Horizontal center */
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 5000;
@@ -225,25 +261,32 @@ body {
     pointer-events: none;
 }
 
+/* ========================================== */
+/* DANCING MUSIC ICONS - The 3 music notes that dance */
+/* ========================================== */
 .music-icon-dance {
     display: flex;
-    gap: 30px;
+    gap: 30px;                      /* SPACE BETWEEN NOTES:
+                                       - BIGGER = more space between notes
+                                       - Try: 50px for more space, 20px for less */
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 40px;            /* Space below music icons */
 }
 
 .music-icon-dance i {
-    font-size: 50px;
-    color: var(--color-burgundy);
+    font-size: 50px;                /* MUSIC NOTE SIZE:
+                                       - BIGGER = bigger notes
+                                       - Try: 70px for bigger, 40px for smaller */
+    color: var(--color-burgundy);   /* Note color */
     animation: musicDance 0.8s ease-in-out infinite;
 }
 
 .music-icon-dance i:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: 0.2s;          /* Second note starts dancing 0.2s later */
 }
 
 .music-icon-dance i:nth-child(3) {
-    animation-delay: 0.4s;
+    animation-delay: 0.4s;          /* Third note starts dancing 0.4s later */
 }
 
 @keyframes musicDance {
@@ -251,22 +294,29 @@ body {
         transform: translateY(0) scale(1);
     }
     50% {
-        transform: translateY(-15px) scale(1.1);
+        transform: translateY(-15px) scale(1.1);  /* HOW HIGH NOTES JUMP:
+                                                     - BIGGER negative = jumps HIGHER
+                                                     - Try: -25px for higher, -10px for lower */
     }
 }
 
-/* ========== BIRTHDAY MESSAGE ========== */
+/* ========================================== */
+/* BIRTHDAY MESSAGES - Text messages like "Hey Bella!" */
+/* HOW TO MOVE IT:
+   - It's centered by default
+   - Change max-width to make text area wider/narrower
+/* ========================================== */
 .birthday-message-container {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%;                       /* Vertical center */
+    left: 50%;                      /* Horizontal center */
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 4999;
     opacity: 0;
     visibility: hidden;
     width: 90%;
-    max-width: 800px;
+    max-width: 800px;               /* Maximum width - BIGGER = wider text area */
 }
 
 .birthday-message-container.show {
@@ -281,14 +331,16 @@ body {
 }
 
 .message-line {
-    font-size: 38px;
+    font-size: 38px;                /* MESSAGE TEXT SIZE:
+                                       - BIGGER = bigger text
+                                       - Try: 45px for bigger, 30px for smaller */
     font-weight: 600;
-    color: var(--color-burgundy);
+    color: var(--color-burgundy);   /* Text color */
     font-family: 'Poppins', sans-serif;
     opacity: 0;
     transform: scale(0.8);
-    letter-spacing: 1px;
-    line-height: 1.6;
+    letter-spacing: 1px;            /* Space between letters - BIGGER = more spaced */
+    line-height: 1.6;               /* Space between lines */
 }
 
 .message-line.show {
@@ -321,16 +373,25 @@ body {
     }
 }
 
-/* ========== FLYING CAKE ========== */
+/* ========================================== */
+/* FLYING CAKE (CAKE 1) - The cake that flies up with balloons */
+/* HOW TO MOVE IT:
+   - Change "left" to move LEFT/RIGHT
+   - Change "bottom" in animation to move UP/DOWN
+/* ========================================== */
 .flying-cake-container {
     position: fixed;
-    bottom: -500px;
-    left: 50%;
+    bottom: -500px;                 /* Starting position (hidden below screen) */
+    left: 50%;                      /* HORIZONTAL POSITION:
+                                       - 50% = CENTER
+                                       - 60% = MORE RIGHT
+                                       - 40% = MORE LEFT
+                                       - Try any % from 0% to 100% */
     transform: translateX(-50%);
     z-index: 2700;
     display: flex;
     align-items: flex-end;
-    gap: 20px;
+    gap: 20px;                      /* Space between balloons and cake */
     opacity: 0;
 }
 
@@ -340,15 +401,20 @@ body {
 
 @keyframes flyUpCakeSlower {
     0% {
-        bottom: -500px;
+        bottom: -500px;             /* Start position (off screen) */
         opacity: 0;
     }
     15% {
         opacity: 1;
     }
     100% {
-        bottom: 40%;
-        opacity: 1;
+        bottom: 40%;                /* FINAL HEIGHT POSITION:
+                                       - BIGGER % = HIGHER on screen
+                                       - SMALLER % = LOWER on screen
+                                       - 50% = middle of screen
+                                       - 60% = higher up
+                                       - 30% = lower down */
+        opacity: 1;                 
         transform: translate(-50%, 50%);
     }
 }
@@ -372,13 +438,16 @@ body {
     }
     100% {
         bottom: auto;
-        top: 350px;
+        top: 350px;                 /* Where cake goes before disappearing */
         left: 50%;
         transform: translate(-50%, 0) scale(0.6);
         opacity: 0;
     }
 }
 
+/* ========================================== */
+/* BALLOONS - Balloons attached to flying cake */
+/* ========================================== */
 .balloon-left,
 .balloon-right {
     position: relative;
@@ -390,7 +459,7 @@ body {
 }
 
 .balloon-right {
-    animation-delay: 0.5s;
+    animation-delay: 0.5s;          
 }
 
 @keyframes balloonFloat {
@@ -398,13 +467,15 @@ body {
         transform: translateY(0) rotate(-5deg);
     }
     50% {
-        transform: translateY(-20px) rotate(5deg);
+        transform: translateY(-20px) rotate(5deg);  /* HOW HIGH BALLOONS FLOAT:
+                                                       - BIGGER negative = floats HIGHER
+                                                       - Try: -30px for higher, -10px for lower */
     }
 }
 
 .balloon-string {
-    width: 2px;
-    height: 100px;
+    width: 2px;                     /* String thickness - BIGGER = thicker string */
+    height: 100px;                  /* String length - BIGGER = longer string */
     background: linear-gradient(to bottom, #666, transparent);
     position: absolute;
     bottom: -100px;
@@ -417,12 +488,17 @@ body {
 }
 
 .flying-cake-img {
-    width: 300px;
+    width: 300px;                   /* FLYING CAKE SIZE:
+                                       - BIGGER = bigger cake
+                                       - SMALLER = smaller cake
+                                       - Try: 350px for bigger, 250px for smaller */
     height: auto;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
 }
 
-/* ========== DECORATIONS ========== */
+/* ========================================== */
+/* DECORATIVE FLAGS - Pink triangular flags on sides */
+/* ========================================== */
 .flag__birthday {
     display: flex;
     justify-content: space-between;
@@ -432,23 +508,31 @@ body {
 
 @keyframes flagSlideDown {
     to {
-        transform: translateY(-10px);
+        transform: translateY(-10px);  /* Final position - BIGGER negative = HIGHER */
     }
 }
 
 .flag__birthday .flag__left {
-    transform: rotate(-10deg) translate(-20px, 30px);
+    transform: rotate(-10deg) translate(-20px, 30px);  /* Angle and position of left flag */
 }
 
 .flag__birthday .flag__right {
-    transform: rotate(10deg) translate(20px, 30px) scaleX(-1);
+    transform: rotate(10deg) translate(20px, 30px) scaleX(-1);  /* Angle and position of right flag */
 }
 
+/* ========================================== */
+/* DECORATIVE STARS - Small orange stars scattered around */
+/* HOW TO MOVE EACH STAR:
+   - Change "top" to move UP/DOWN (smaller = higher, bigger = lower)
+   - Change "left" to move from LEFT edge (bigger = more right)
+   - Change "right" to move from RIGHT edge (bigger = more left)
+   - Change "bottom" to move from BOTTOM edge (bigger = higher up)
+/* ========================================== */
 .decorate_star {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--color-terracotta);
+    width: 20px;                    /* STAR WIDTH - BIGGER = wider star */
+    height: 20px;                   /* STAR HEIGHT - BIGGER = taller star */
+    background: var(--color-terracotta);  /* Star color */
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     opacity: 0;
     animation: starTwinkle 1s 1.5s forwards, rotateStar 4s 2.5s infinite ease-in-out;
@@ -467,12 +551,50 @@ body {
     }
 }
 
-.star1 { top: 100px; left: 200px; }
-.star2 { top: 150px; right: 250px; }
-.star3 { top: 350px; left: 500px; }
-.star4 { bottom: 120px; left: 100px; }
-.star5 { bottom: 200px; right: 150px; }
+/* STAR 1 POSITION */
+.star1 { 
+    top: 100px;                     /* Distance from TOP edge:
+                                       - SMALLER number = HIGHER on screen
+                                       - BIGGER number = LOWER on screen */
+    left: 200px;                    /* Distance from LEFT edge:
+                                       - SMALLER number = MORE LEFT
+                                       - BIGGER number = MORE RIGHT */
+}
 
+/* STAR 2 POSITION */
+.star2 { 
+    top: 150px;                     /* Distance from TOP - change to move up/down */
+    right: 250px;                   /* Distance from RIGHT edge:
+                                       - SMALLER number = MORE RIGHT
+                                       - BIGGER number = MORE LEFT */
+}
+
+/* STAR 3 POSITION */
+.star3 { 
+    top: 350px;                     /* Distance from TOP - change to move up/down */
+    left: 500px;                    /* Distance from LEFT - change to move left/right */
+}
+
+/* STAR 4 POSITION */
+.star4 { 
+    bottom: 120px;                  /* Distance from BOTTOM edge:
+                                       - SMALLER number = LOWER on screen
+                                       - BIGGER number = HIGHER on screen */
+    left: 100px;                    /* Distance from LEFT - change to move left/right */
+}
+
+/* STAR 5 POSITION */
+.star5 { 
+    bottom: 200px;                  /* Distance from BOTTOM - change to move up/down */
+    right: 150px;                   /* Distance from RIGHT - change to move left/right */
+}
+
+/* ========================================== */
+/* DECORATIVE FLOWERS - Small flower decorations */
+/* HOW TO MOVE EACH FLOWER:
+   - Change "top" to move UP/DOWN
+   - Change "left" or "right" to move LEFT/RIGHT
+/* ========================================== */
 .decorate_flower--one,
 .decorate_flower--two,
 .decorate_flower--three {
@@ -485,20 +607,47 @@ body {
     to { opacity: 1; }
 }
 
-.decorate_flower--one { top: 250px; left: 50px; }
-.decorate_flower--two { top: 225px; right: 460px; }
-.decorate_flower--three { top: 150px; right: 235px; }
-
-.decorate_bottom {
-    position: absolute;
-    right: 0;
-    bottom: -10px;
+/* FLOWER 1 POSITION */
+.decorate_flower--one { 
+    top: 250px;                     /* Distance from top - SMALLER = HIGHER */
+    left: 50px;                     /* Distance from left - SMALLER = MORE LEFT */
 }
 
+/* FLOWER 2 POSITION */
+.decorate_flower--two { 
+    top: 225px;                     /* Distance from top - SMALLER = HIGHER */
+    right: 460px;                   /* Distance from right - SMALLER = MORE RIGHT */
+}
+
+/* FLOWER 3 POSITION */
+.decorate_flower--three { 
+    top: 150px;                     /* Distance from top - SMALLER = HIGHER */
+    right: 235px;                   /* Distance from right - SMALLER = MORE RIGHT */
+}
+
+/* ========================================== */
+/* BOTTOM DECORATION - Decoration at bottom right corner */
+/* ========================================== */
+.decorate_bottom {
+    position: absolute;
+    right: 0;                       /* Distance from right - 0 = touching right edge */
+    bottom: -10px;                  /* Distance from bottom - negative = goes below */
+}
+
+/* ========================================== */
+/* SMILEY ICON - The smiley face emoji in background */
+/* HOW TO MOVE IT:
+   - Change "bottom" to move UP/DOWN
+   - It's horizontally centered by default
+/* ========================================== */
 .smiley__icon {
     position: absolute;
-    bottom: 180px;
-    left: 600px;
+    bottom: 180px;                  /* Distance from BOTTOM edge:
+                                       - BIGGER number = HIGHER on screen
+                                       - SMALLER number = LOWER on screen
+                                       - Try: 300px for higher, 200px for lower */
+    left: 40%;                      /* Horizontal center */
+    transform: translateX(-50%);
     opacity: 0;
     animation: smileyPop 0.6s 2s forwards;
 }
@@ -506,28 +655,37 @@ body {
 @keyframes smileyPop {
     0% {
         opacity: 0;
-        transform: scale(0) rotate(-180deg);
+        transform: translateX(-50%) scale(0) rotate(-180deg);
     }
     60% {
-        transform: scale(1.2) rotate(10deg);
+        transform: translateX(-50%) scale(1.2) rotate(10deg);
     }
     100% {
         opacity: 1;
-        transform: scale(1) rotate(0deg);
+        transform: translateX(-50%) scale(1) rotate(0deg);
     }
 }
 
-/* ========== CONTENT (PERFECT ALIGNMENT) ========== */
+/* ========================================== */
+/* MAIN CONTENT - Container holding all 3 columns */
+/* (Left: Happy Birthday | Middle: Cake 2 | Right: Bella's image) */
+/* ========================================== */
 .content {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1400px;              /* Maximum width of entire content */
     margin: 0 auto;
     position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 180px 50px 50px 50px;
-    gap: 50px;
+    padding: 180px 50px 50px 50px;  /* TOP, RIGHT, BOTTOM, LEFT padding
+                                       - First: space from top
+                                       - Second: space from right
+                                       - Third: space from bottom
+                                       - Fourth: space from left */
+    gap: 50px;                      /* SPACE BETWEEN COLUMNS:
+                                       - BIGGER = more space between left/middle/right
+                                       - Try: 70px for more space, 30px for less */
     opacity: 0;
 }
 
@@ -539,42 +697,56 @@ body {
     to { opacity: 1; }
 }
 
+/* ========================================== */
+/* LEFT COLUMN - Contains "Happy Birthday" text, date, and button */
+/* ========================================== */
 .content .left {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    min-width: 300px;
+    flex: 1;                        /* Takes equal space */
+    min-width: 300px;               /* Minimum width */
 }
 
+/* ========================================== */
+/* MIDDLE COLUMN - Contains Cake 2 (behind Birthday text) */
+/* ========================================== */
 .content .middle {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex: 1;
-    min-width: 250px;
+    justify-content: flex-start;
+    flex: 1;                        /* Takes equal space */
+    min-width: 250px;               /* Minimum width */
 }
 
+/* ========================================== */
+/* RIGHT COLUMN - Contains Bella's image and rotating badge */
+/* ========================================== */
 .content .right {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    min-width: 300px;
+    flex: 1;                        /* Takes equal space */
+    min-width: 300px;               /* Minimum width */
 }
 
-/* ========== TITLE (BIGGER & BEAUTIFUL) ========== */
+/* ========================================== */
+/* TITLE - "Happy Birthday" text in left column */
+/* ========================================== */
 .title {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Dancing Script", cursive;
-    font-size: 4rem;
+    font-size: 4rem;                /* TEXT SIZE:
+                                       - BIGGER = bigger text
+                                       - Try: 5rem for bigger, 3rem for smaller
+                                       - "rem" is a size unit */
     flex-direction: column;
     perspective: 1000px;
 }
@@ -582,7 +754,7 @@ body {
 .title .happy,
 .title .birthday {
     position: relative;
-    text-shadow: 5px 5px var(--color-black), 
+    text-shadow: 5px 5px var(--color-black),   /* 3D text shadow effect */
                 -5px 5px var(--color-black), 
                 5px -5px var(--color-black), 
                 -5px -5px var(--color-black), 
@@ -590,11 +762,11 @@ body {
     font-weight: bold;
     display: flex;
     justify-content: center;
-    letter-spacing: 4px;
+    letter-spacing: 4px;            /* Space between letters - BIGGER = more space */
 }
 
 .title .happy {
-    color: var(--color-white);
+    color: var(--color-white);      /* "Happy" text color */
 }
 
 .title .happy span,
@@ -617,15 +789,24 @@ body {
 }
 
 .title .birthday {
-    color: var(--color-salmon);
+    color: var(--color-salmon);     /* "Birthday" text color */
 }
 
+/* ========================================== */
+/* PARTY HAT - The party hat that appears above text */
+/* HOW TO MOVE IT:
+   - Change "right" to move LEFT/RIGHT
+   - Change "top" in animation to move UP/DOWN
+/* ========================================== */
 .title .hat {
     position: absolute;
-    right: 30px;
-    top: -350px;
-    transform: rotate(-40deg);
-    z-index: -1;
+    right: 30px;                    /* Distance from RIGHT of text:
+                                       - SMALLER number = MORE RIGHT
+                                       - BIGGER number = MORE LEFT
+                                       - Try: 10px to move right, 60px to move left */
+    top: -350px;                    /* Starting position (hidden above) */
+    transform: rotate(-40deg);      /* Starting tilt angle */
+    z-index: -1;                    /* Behind text */
     opacity: 0;
 }
 
@@ -635,32 +816,37 @@ body {
 
 @keyframes topHat {
     0% {
-        top: -350px;
+        top: -350px;                /* Start position (hidden) */
         transform: rotate(-40deg);
         opacity: 0;
     }
     40% {
-        top: -30px;
+        top: -30px;                 /* FINAL POSITION:
+                                       - More NEGATIVE = HIGHER
+                                       - Less NEGATIVE = LOWER
+                                       - Try: -50px for higher, -10px for lower */
         transform: rotate(-40deg);
         opacity: 1;
     }
     70%, 100% {
-        top: -30px;
-        transform: rotate(0deg);
+        top: -30px;                 
+        transform: rotate(0deg);    /* Straightens to 0 degrees */
         opacity: 1;
     }
 }
 
-/* ========== DATE ========== */
+/* ========================================== */
+/* DATE BOX - The "27 December" rounded box */
+/* ========================================== */
 .date__of__birth {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--color-salmon);
-    border-radius: 50px;
-    margin-top: 25px;
+    background-color: var(--color-salmon);  /* Box background color */
+    border-radius: 50px;            /* Roundness - BIGGER = more round */
+    margin-top: 25px;               /* Space above box - BIGGER = more space */
     font-family: "Poppins", sans-serif;
-    border: 3px solid var(--color-black);
+    border: 3px solid var(--color-black);  /* Border thickness */
     position: relative;
     transform: translateY(-100px);
     z-index: -1;
@@ -685,28 +871,34 @@ body {
         transform: translateY(0px);
         opacity: 1;
         visibility: visible;
-        width: 320px;
+        width: 320px;               /* BOX WIDTH:
+                                       - BIGGER = wider box
+                                       - Try: 350px for wider, 280px for narrower */
         height: 0px;
     }
     50%, 100% {
         transform: translateY(0px);
         opacity: 1;
         visibility: visible;
-        width: 320px;
-        height: 55px;
+        width: 320px;               
+        height: 55px;               /* BOX HEIGHT:
+                                       - BIGGER = taller box
+                                       - Try: 65px for taller, 45px for shorter */
     }
 }
 
 .date__of__birth span {
     font-weight: bold;
-    margin: 0px 40px;
-    font-size: 1.3rem;
+    margin: 0px 40px;               /* Left/right spacing inside box */
+    font-size: 1.3rem;              /* Date text size - BIGGER = bigger text */
 }
 
-/* ========== BUTTON ========== */
+/* ========================================== */
+/* BUTTON - "Read Your Message" button */
+/* ========================================== */
 .left .btn {
     transform: scale(0);
-    margin-top: 35px;
+    margin-top: 35px;               /* Space above button - BIGGER = more space */
 }
 
 .left .btn.show {
@@ -730,12 +922,14 @@ body {
 
 #btn__postcard {
     position: relative;
-    background-color: var(--color-burgundy);
+    background-color: var(--color-burgundy);  /* Button color */
     outline: none;
-    padding: 16px 32px;
-    font-size: 1.05rem;
-    border-radius: 50px;
-    border: 3px solid var(--color-terracotta);
+    padding: 16px 32px;             /* TOP/BOTTOM, LEFT/RIGHT padding
+                                       - First: BIGGER = taller button
+                                       - Second: BIGGER = wider button */
+    font-size: 1.05rem;             /* Button text size */
+    border-radius: 50px;            /* Roundness */
+    border: 3px solid var(--color-terracotta);  /* Border thickness and color */
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     display: flex;
@@ -743,7 +937,7 @@ body {
     justify-content: center;
     cursor: pointer;
     z-index: 2;
-    color: white;
+    color: white;                   
     transition: all 0.3s ease;
 }
 
@@ -752,23 +946,38 @@ body {
 }
 
 #btn__postcard i {
-    margin-left: 12px;
-    font-size: 20px;
+    margin-left: 12px;              /* Space between text and icon */
+    font-size: 20px;                /* Icon size */
 }
 
 #btn__postcard:hover {
     background-color: var(--color-terracotta);
     border-color: var(--color-burgundy);
-    transform: translateY(-3px);
+    transform: translateY(-3px);    
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* ========== MIDDLE CAKE (BIGGER) ========== */
+/* ========================================== */
+/* MAIN CAKE (CAKE 2) - The tilted cake behind Birthday text */
+/* HOW TO MOVE IT:
+   - Change "left" to move LEFT/RIGHT
+   - Change "top" to move UP/DOWN
+   - Change "rotate" angle to tilt more/less
+/* ========================================== */
 .final-cake-container {
-    position: relative;
+    position: absolute;
+    left: -100px;                   /* HORIZONTAL POSITION:
+                                       - MORE NEGATIVE (like -150px) = MORE TO LEFT
+                                       - LESS NEGATIVE (like -80px) = MORE TO RIGHT
+                                       - POSITIVE (like 20px) = TO THE RIGHT
+                                       - Try: -150px for more left, -90px for more right */
+    top: 35px;                     /* VERTICAL POSITION:
+                                       - SMALLER number (like 80px) = HIGHER
+                                       - BIGGER number (like 160px) = LOWER
+                                       - Try: 100px for higher, 150px for lower */
     opacity: 0;
-    transform: scale(0);
-    margin-top: 60px;
+    transform: scale(0) rotate(0deg);
+    z-index: -2;                    /* Behind text (negative = behind) */
 }
 
 .final-cake-container.show {
@@ -781,34 +990,47 @@ body {
         transform: scale(0) rotate(-180deg);
     }
     60% {
-        transform: scale(1.1) rotate(10deg);
+        transform: scale(1.1) rotate(-18deg);
     }
     100% {
         opacity: 1;
-        transform: scale(1) rotate(0deg);
+        transform: scale(1) rotate(15deg);  /* TILT ANGLE:
+                                                - NEGATIVE = tilts LEFT
+                                                - POSITIVE = tilts RIGHT
+                                                - BIGGER number = more tilt
+                                                - Try: -20deg for more tilt left
+                                                - Try: -10deg for less tilt
+                                                - Try: 15deg to tilt right instead */
     }
 }
 
 .final-cake {
-    width: 250px;
+    width: 250px;                   /* CAKE SIZE:
+                                       - BIGGER = bigger cake
+                                       - SMALLER = smaller cake
+                                       - Try: 300px for bigger, 200px for smaller */
     height: auto;
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
-    animation: gentleFloat 3s ease-in-out infinite;
+    animation: gentleFloatTilted 3s ease-in-out infinite;
 }
 
-@keyframes gentleFloat {
+@keyframes gentleFloatTilted {
     0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0px) rotate(-15deg);  /* Starting position */
     }
     50% {
-        transform: translateY(-12px);
+        transform: translateY(-12px) rotate(-15deg);  /* HOW HIGH CAKE FLOATS:
+                                                         - BIGGER negative = floats HIGHER
+                                                         - Try: -20px for more float */
     }
 }
 
-/* ========== IMAGE BOX (PERFECTLY ALIGNED) ========== */
+/* ========================================== */
+/* BELLA'S IMAGE BOX - The circular photo frame */
+/* ========================================== */
 .right .box__account {
     position: relative;
-    transform: translateY(700px);
+    transform: translateY(700px);   /* Starting position (hidden below screen) */
     opacity: 0;
 }
 
@@ -818,57 +1040,86 @@ body {
 
 @keyframes topBoxImage {
     to {
-        transform: translateY(0);
+        transform: translateY(0);   
         opacity: 1;
     }
 }
 
 .content .right .image {
     position: relative;
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
+    width: 380px;                   /* IMAGE FRAME WIDTH:
+                                       - BIGGER = wider frame
+                                       - SMALLER = narrower frame
+                                       - Try: 420px for bigger, 340px for smaller */
+    height: 380px;                  /* IMAGE FRAME HEIGHT:
+                                       - BIGGER = taller frame
+                                       - SMALLER = shorter frame
+                                       - Keep same as width for perfect circle */
+    border-radius: 50%;             /* 50% = perfect circle */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 6px solid var(--color-black);
+    border: 6px solid var(--color-black);  /* Border thickness around image */
 }
 
 .content .right .image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;              /* How image fits in frame */
 }
 
-/* ========== NAME BANNER (PERFECTLY CENTERED) ========== */
+/* ========================================== */
+/* NAME BANNER - "Dear Bella" banner below image */
+/* HOW TO MOVE IT:
+   - It's auto-centered below image
+   - Change "bottom" to move UP/DOWN relative to image
+/* ========================================== */
 .name {
     position: absolute;
-    padding: 8px 30px;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 3px solid var(--color-black);
+    padding: 8px 30px;              /* TOP/BOTTOM, LEFT/RIGHT padding inside banner */
+    bottom: -25px;                  /* Distance BELOW image:
+                                       - MORE NEGATIVE (like -30px) = LOWER
+                                       - LESS NEGATIVE (like -20px) = HIGHER
+                                       - Try: -30px for lower, -15px for higher */
+    left: 50%;                      /* Auto centers horizontally */
+    transform: translateX(-50%);    
+    border: 3px solid var(--color-black);  
     font-family: 'Dancing Script', cursive;
-    background-color: var(--color-salmon);
-    border-radius: 50px;
+    background-color: var(--color-salmon);  
+    border-radius: 50px;            
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 15px;                      /* Space between stars and text */
     white-space: nowrap;
 }
 
 .name span {
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 1.8rem;              /* "DEAR BELLA" TEXT SIZE:
+                                       - BIGGER = bigger text
+                                       - Try: 2rem for bigger, 1.5rem for smaller */
 }
 
-/* ========== CIRCLE BADGE ========== */
+/* ========================================== */
+/* ROTATING CIRCLE BADGE - "happy birthday" rotating badge */
+/* HOW TO MOVE IT:
+   - Change "top" to move UP/DOWN
+   - Change "right" to move LEFT/RIGHT
+/* ========================================== */
 .cricle {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 0px;                      /* VERTICAL POSITION from TOP of image:
+                                       - SMALLER number (like 0px) = HIGHER
+                                       - BIGGER number (like 30px) = LOWER
+                                       - NEGATIVE (like -10px) = ABOVE image top
+                                       - Try: 0px for at top, 20px for lower */
+    right: -100px;                   /* HORIZONTAL POSITION from RIGHT of image:
+                                       - MORE NEGATIVE (like -50px) = MORE TO RIGHT
+                                       - LESS NEGATIVE (like -20px) = MORE TO LEFT
+                                       - POSITIVE (like 10px) = TO THE LEFT
+                                       - Try: -40px for more right, -20px for less right */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -876,24 +1127,43 @@ body {
 }
 
 .cricle.show {
-    animation: scaleCricle 2.5s forwards ease-in-out;
+    animation: scaleCricleBadge 2.5s forwards ease-in-out;
+}
+
+@keyframes scaleCricleBadge {
+    0% {
+        transform: scale(0);
+    }
+    10% {
+        transform: scale(1.3);
+    }
+    20% {
+        transform: scale(0.7);
+    }
+    30%, 100% {
+        transform: scale(1);
+    }
 }
 
 .text__cricle {
-    width: 110px;
-    height: 110px;
-    background-color: var(--color-salmon);
-    border-radius: 50%;
-    border: 5px solid var(--color-black);
+    width: 110px;                   /* CIRCLE WIDTH:
+                                       - BIGGER = bigger circle
+                                       - Try: 130px for bigger, 90px for smaller */
+    height: 110px;                  /* CIRCLE HEIGHT:
+                                       - Keep same as width for perfect circle
+                                       - Try: 130px for bigger, 90px for smaller */
+    background-color: var(--color-salmon);  
+    border-radius: 50%;             
+    border: 5px solid var(--color-black);  
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: rotateCricle 5s linear infinite;
+    animation: rotateCricle 5s linear infinite;  /* Rotation speed: 5s = complete rotation */
 }
 
 @keyframes rotateCricle {
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg);  
     }
 }
 
@@ -901,17 +1171,17 @@ body {
     top: 0%;
     left: 50%;
     position: absolute;
-    color: var(--color-black);
+    color: var(--color-black);      
     transform: rotate(calc(var(--i) * 24deg));
     transform-origin: 0 50px;
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.75rem;             /* Text size on circle */
     font-weight: 600;
 }
 
 .fa-star {
-    color: var(--color-terracotta);
+    color: var(--color-terracotta);  
     filter: drop-shadow(0 0 3px var(--color-terracotta));
     animation: starPulse 1.5s infinite linear;
 }
@@ -924,14 +1194,25 @@ body {
 
 .cricle .fa-star {
     position: absolute;
-    transform: scale(0.9);
+    transform: scale(0.9);          
 }
 
-/* ========== BALLOONS ========== */
+/* ========================================== */
+/* FLOATING BALLOONS - Balloons near Bella's image */
+/* HOW TO MOVE BALLOON 1:
+   - Change "top" to move UP/DOWN
+   - Change "left" to move LEFT/RIGHT
+/* ========================================== */
 .right .balloon_one {
     position: absolute;
-    top: -80px;
-    left: -80px;
+    top: -80px;                     /* VERTICAL POSITION:
+                                       - MORE NEGATIVE (like -100px) = HIGHER
+                                       - LESS NEGATIVE (like -60px) = LOWER
+                                       - Try: -100px for higher, -50px for lower */
+    left: -80px;                    /* HORIZONTAL POSITION:
+                                       - MORE NEGATIVE (like -100px) = MORE LEFT
+                                       - LESS NEGATIVE (like -60px) = MORE RIGHT
+                                       - Try: -100px for more left, -50px for more right */
     animation: balloon1 2s infinite linear;
 }
 
@@ -942,20 +1223,30 @@ body {
     }
     25% {
         transform-origin: bottom right;
-        transform: rotate(3deg);
+        transform: rotate(3deg);    
     }
     75% {
         transform-origin: bottom right;
-        transform: rotate(-3deg);
+        transform: rotate(-3deg);   
     }
 }
 
+/* HOW TO MOVE BALLOON 2:
+   - Change "top" to move UP/DOWN
+   - Change "right" to move LEFT/RIGHT
+/* ========================================== */
 .right .balloon_two {
     position: absolute;
-    top: 140px;
-    right: -75px;
+    top: 140px;                     /* VERTICAL POSITION:
+                                       - SMALLER number (like 100px) = HIGHER
+                                       - BIGGER number (like 180px) = LOWER
+                                       - Try: 120px for higher, 160px for lower */
+    right: -75px;                   /* HORIZONTAL POSITION:
+                                       - MORE NEGATIVE (like -100px) = MORE RIGHT
+                                       - LESS NEGATIVE (like -50px) = MORE LEFT
+                                       - Try: -90px for more right, -60px for more left */
     z-index: -1;
-    transform: rotate(10deg);
+    transform: rotate(10deg);       
     animation: balloon2 2s infinite linear;
 }
 
@@ -966,22 +1257,24 @@ body {
     }
     25% {
         transform-origin: bottom left;
-        transform: rotate(7deg);
+        transform: rotate(7deg);    
     }
     75% {
         transform-origin: bottom left;
-        transform: rotate(13deg);
+        transform: rotate(13deg);   
     }
 }
 
-/* ========== 3D POSTCARD (HORIZONTAL 617×405) ========== */
+/* ========================================== */
+/* POSTCARD MODAL - When clicking "Read Your Message" */
+/* ========================================== */
 .postcard-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.95);  
     z-index: 10000;
     display: flex;
     justify-content: center;
@@ -996,17 +1289,23 @@ body {
     visibility: visible;
 }
 
+/* ========================================== */
+/* CLOSE BUTTON - X button to close postcard */
+/* HOW TO MOVE IT:
+   - Change "top" to move UP/DOWN
+   - Change "right" to move LEFT/RIGHT
+/* ========================================== */
 .close-postcard {
     position: fixed;
-    top: 25px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--color-burgundy);
+    top: 25px;                      /* Distance from TOP edge */
+    right: 30px;                    /* Distance from RIGHT edge */
+    width: 50px;                    /* Button size */
+    height: 50px;                   
+    background: var(--color-burgundy);  
     border: none;
-    border-radius: 50%;
+    border-radius: 50%;             
     color: white;
-    font-size: 24px;
+    font-size: 24px;                
     cursor: pointer;
     z-index: 10002;
     transition: all 0.3s ease;
@@ -1014,29 +1313,35 @@ body {
 }
 
 .close-postcard:hover {
-    transform: rotate(90deg) scale(1.1);
+    transform: rotate(90deg) scale(1.1);  
     background: var(--color-salmon);
 }
 
+/* ========================================== */
+/* POSTCARD HINT - "Drag to rotate" text */
+/* ========================================== */
 .postcard-hint {
     position: fixed;
-    top: 30px;
-    left: 50%;
+    top: 30px;                      
+    left: 50%;                      
     transform: translateX(-50%);
     color: white;
-    font-size: 16px;
+    font-size: 16px;                
     font-family: 'Poppins', sans-serif;
     z-index: 10002;
     background: rgba(176, 95, 95, 0.9);
-    padding: 12px 30px;
+    padding: 12px 30px;             
     border-radius: 30px;
     font-weight: 500;
 }
 
+/* ========================================== */
+/* POSTCARD 3D CARD */
+/* ========================================== */
 .postcard-scene {
-    width: 617px;
-    height: 405px;
-    perspective: 2000px;
+    width: 617px;                   /* POSTCARD WIDTH - change to make wider/narrower */
+    height: 405px;                  /* POSTCARD HEIGHT - change to make taller/shorter */
+    perspective: 2000px;            
     user-select: none;
 }
 
@@ -1045,7 +1350,7 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(-15deg) rotateY(15deg);
+    transform: rotateX(-15deg) rotateY(15deg);  
     cursor: grab;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
@@ -1059,7 +1364,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 12px;
+    border-radius: 12px;            
     overflow: hidden;
 }
 
@@ -1077,38 +1382,51 @@ body {
 
 .postcard-back {
     background: white;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg);     
 }
 
-/* ========== RESPONSIVE (TABLET) ========== */
+/* ========================================== */
+/* RESPONSIVE - TABLET SIZE (Screens 1200px wide or smaller) */
+/* ========================================== */
 @media screen and (max-width: 1200px) {
     .content {
-        gap: 30px;
+        gap: 30px;                  
         padding: 160px 30px 50px 30px;
     }
 
     .title {
-        font-size: 3.2rem;
+        font-size: 3.2rem;          
     }
 
     .content .right .image {
-        width: 320px;
+        width: 320px;               
         height: 320px;
     }
 
     .final-cake {
-        width: 200px;
+        width: 200px;               
+    }
+
+    .final-cake-container {
+        left: -100px;               
+        top: 100px;
     }
 
     .birthday-banner img {
-        width: 500px;
+        width: 500px;               
+    }
+
+    .cricle {
+        right: -20px;               
     }
 }
 
-/* ========== RESPONSIVE (PHONE) ========== */
+/* ========================================== */
+/* RESPONSIVE - PHONE SIZE (Screens 768px wide or smaller) */
+/* ========================================== */
 @media screen and (max-width: 768px) {
     .content {
-        flex-direction: column;
+        flex-direction: column;     /* Stack vertically instead of side by side */
         padding: 140px 20px 50px 20px;
         align-items: center;
         gap: 40px;
@@ -1122,28 +1440,35 @@ body {
     }
 
     .title {
-        font-size: 2.8rem;
+        font-size: 2.8rem;          
     }
 
     .birthday-banner img {
-        width: 350px;
+        width: 350px;               
     }
 
     .message-line {
-        font-size: 28px;
+        font-size: 28px;            
     }
 
     .flying-cake-img {
-        width: 220px;
+        width: 220px;               
     }
 
     .content .right .image {
-        width: 300px;
+        width: 300px;               
         height: 300px;
     }
 
     .final-cake {
-        width: 180px;
+        width: 180px;               
+    }
+
+    .final-cake-container {
+        position: relative;
+        left: 0;
+        top: 20px;
+        margin: 0 auto;
     }
 
     .date__of__birth {
@@ -1155,44 +1480,53 @@ body {
     }
 
     .name span {
-        font-size: 1.5rem;
+        font-size: 1.5rem;          
     }
 
     .postcard-scene {
-        width: 490px;
+        width: 490px;               
         height: 322px;
-    }
-
-    .final-cake-container {
-        margin-top: 20px;
     }
 
     .balloon_one,
     .balloon_two {
-        display: none;
+        display: none;              /* Hide balloons on phone */
+    }
+
+    .cricle {
+        right: 10px;
+        top: -5px;
+    }
+
+    .smiley__icon {
+        bottom: auto;
+        top: 550px;
     }
 }
 
+/* ========================================== */
+/* RESPONSIVE - SMALL PHONE (Screens 480px wide or smaller) */
+/* ========================================== */
 @media screen and (max-width: 480px) {
     .title {
-        font-size: 2.2rem;
+        font-size: 2.2rem;          
     }
 
     .birthday-banner img {
-        width: 280px;
+        width: 280px;               
     }
 
     .content .right .image {
-        width: 260px;
+        width: 260px;               
         height: 260px;
     }
 
     .final-cake {
-        width: 150px;
+        width: 150px;               
     }
 
     .postcard-scene {
-        width: 370px;
+        width: 370px;               
         height: 243px;
     }
 
@@ -1203,12 +1537,15 @@ body {
 
     .date__of__birth span {
         font-size: 0.95rem;
-        margin: 0px 20px;
     }
 
     #btn__postcard {
         padding: 14px 24px;
         font-size: 0.95rem;
+    }
+
+    .cricle {
+        right: 5px;
     }
 }
 
